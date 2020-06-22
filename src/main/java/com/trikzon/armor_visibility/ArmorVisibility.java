@@ -12,14 +12,13 @@ package com.trikzon.armor_visibility;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import net.fabricmc.api.ClientModInitializer;
-import net.fabricmc.fabric.api.client.keybinding.FabricKeyBinding;
-import net.fabricmc.fabric.api.client.keybinding.KeyBindingRegistry;
+import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
 import net.fabricmc.fabric.api.event.client.ClientTickCallback;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.ClientPlayerEntity;
+import net.minecraft.client.options.KeyBinding;
 import net.minecraft.client.util.InputUtil;
 import net.minecraft.text.TranslatableText;
-import net.minecraft.util.Identifier;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.lwjgl.glfw.GLFW;
@@ -36,29 +35,24 @@ public class ArmorVisibility implements ClientModInitializer
     private static final File MOD_CONFIG_FILE = new File("./config/" + MOD_ID + ".json");
     public static ConfigBean CONFIG = new ConfigBean();
 
-    private static FabricKeyBinding keyBinding;
+    private static KeyBinding keyBinding = KeyBindingHelper.registerKeyBinding(new KeyBinding(
+            "key." + MOD_ID + ".armor_visible_toggle",
+            InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_V,
+            "key.category." + MOD_ID
+    ));
     private static boolean keyWasDown;
 
     @Override
     public void onInitializeClient()
     {
-        if (!MOD_CONFIG_FILE.exists())
-        {
-            writeConfigFile();
-        }
-        else
+        if (MOD_CONFIG_FILE.exists())
         {
             readConfigFile();
         }
-
-        keyBinding = FabricKeyBinding.Builder.create(
-                new Identifier(MOD_ID, "armor_visible_toggle"),
-                InputUtil.Type.KEYSYM,
-                GLFW.GLFW_KEY_V,
-                "category." + MOD_ID
-        ).build();
-        KeyBindingRegistry.INSTANCE.register(keyBinding);
-        KeyBindingRegistry.INSTANCE.addCategory("category." + MOD_ID);
+        else
+        {
+            writeConfigFile();
+        }
 
         ClientTickCallback.EVENT.register(this::onClientTick);
     }
@@ -74,14 +68,14 @@ public class ArmorVisibility implements ClientModInitializer
             if (player.isSneaking())
             {
                 CONFIG.allArmorInvis = !CONFIG.allArmorInvis;
-                player.addChatMessage(new TranslatableText(
+                player.sendMessage(new TranslatableText(
                         "message." + MOD_ID + ".all_armor_invis." + CONFIG.allArmorInvis
                 ), true);
                 writeConfigFile();
                 return;
             }
             CONFIG.myArmorInvis = !CONFIG.myArmorInvis;
-            player.addChatMessage(new TranslatableText(
+            player.sendMessage(new TranslatableText(
                     "message." + MOD_ID + ".my_armor_invis." + CONFIG.myArmorInvis
             ), true);
             writeConfigFile();
