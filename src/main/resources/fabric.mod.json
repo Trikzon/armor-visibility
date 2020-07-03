@@ -24,5 +24,8 @@
   },
   "mixins": [
     "armor-visibility.mixins.json"
-  ]
+  ],
+  "custom": {
+  "modmenu:clientsideOnly": true
+  }
 }
