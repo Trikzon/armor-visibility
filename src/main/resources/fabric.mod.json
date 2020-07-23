@@ -24,5 +24,11 @@
   },
   "mixins": [
     "armor-visibility.mixins.json"
-  ]
+  ],
+  "depends": {
+    "fabric": "*"
+  },
+  "custom": {
+    "modmenu:clientsideOnly": true
+  }
 }
