@@ -15,7 +15,6 @@ public final class ArmorVisibilityClient {
         ArmorVisibilityClient.keyBinding = PlatformClient.registerKeyBinding(
                 new Identifier(ArmorVisibility.MOD_ID, "armor_visibility_toggle"),
                 GLFW.GLFW_KEY_V,
-//                ArmorVisibility.MOD_ID
                 "key.categories.movement"
         );
         PlatformClient.registerClientTickEvent(ArmorVisibilityClient::onClientTick);
