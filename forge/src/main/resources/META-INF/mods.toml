@@ -1,0 +1,31 @@
+modLoader = "javafml"
+loaderVersion = "[31,)"
+issueTrackerURL = "https://github.com/trikzon/armor-visibility/issues"
+license = "MIT"
+
+[[mods]]
+modId = "armor-visibility"
+version = "${version}"
+displayName = "Armor Visibility"
+#updateJSONURL = ""
+displayURL = "https://www.curseforge.com/minecraft/mc-mods/armor-visibility"
+#credits = ""
+authors = "Trikzon"
+description = '''
+View yours and others' skins through armor.
+'''
+#logoFile = ""
+
+[[dependencies.armor-visibility]]
+modId = "forge"
+mandatory = true
+versionRange = "[31,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.armor-visibility]]
+modId = "minecraft"
+mandatory = true
+versionRange = "[1.15,)"
+ordering = "NONE"
+side = "BOTH"

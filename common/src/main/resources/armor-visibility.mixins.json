@@ -6,8 +6,8 @@
   "mixins": [
   ],
   "client": [
-    "ArmorFeatureRendererMixin",
-    "ElytraFeatureRendererMixin"
+    "client.ArmorFeatureRendererMixin",
+    "client.ElytraFeatureRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1

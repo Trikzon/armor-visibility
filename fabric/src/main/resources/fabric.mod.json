@@ -1,0 +1,37 @@
+{
+    "schemaVersion": 1,
+    "id": "armor-visibility",
+    "version": "${version}",
+    "name": "Armor Visibility",
+    "description": "View yours and others' skins through armor.",
+    "authors": [
+      "Trikzon"
+    ],
+    "contact": {
+        "homepage": "https://www.curseforge.com/minecraft/mc-mods/armor-visibility",
+        "issues": "https://github.com/trikzon/armor-visibility/issues",
+        "sources": "https://github.com/dodogang/armor-visibility"
+    },
+    "license": "MIT",
+    "icon": "assets/armor-visibility/icon.png",
+    "environment": "*",
+    "entrypoints": {
+        "client": [
+            "com.trikzon.armor_visibility.client.fabric.ArmorVisibilityClientFabric"
+        ]
+    },
+    "mixins": [
+        "armor-visibility.mixins.json"
+    ],
+    "depends": {
+        "fabricloader": ">=0.7.4",
+        "fabric": "*",
+        "minecraft": ">=1.15"
+    },
+    "suggests": {
+        "flamingo": "*"
+    },
+    "custom": {
+        "modmenu:clientsideOnly": true
+    }
+}

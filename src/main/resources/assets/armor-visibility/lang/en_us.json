@@ -1,8 +1,0 @@
-{
-  "category.armor-visibility": "Armor Visibility",
-  "key.armor-visibility.armor_visible_toggle": "Toggle Armor Visibility",
-  "message.armor-visibility.my_armor_invis.true": "My Armor: Invisible",
-  "message.armor-visibility.my_armor_invis.false": "My Armor: Visible",
-  "message.armor-visibility.all_armor_invis.true": "All Armor: Invisible",
-  "message.armor-visibility.all_armor_invis.false": "All Armor: Visible"
-}
