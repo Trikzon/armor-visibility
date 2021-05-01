@@ -15,7 +15,6 @@ public final class ArmorVisibilityClient {
         ArmorVisibilityClient.keyBinding = PlatformClient.registerKeyBinding(
                 new Identifier(ArmorVisibility.MOD_ID, "armor_visibility_toggle"),
                 GLFW.GLFW_KEY_V,
-//                ArmorVisibility.MOD_ID
                 "key.categories.movement"
         );
         PlatformClient.registerClientTickEvent(ArmorVisibilityClient::onClientTick);
@@ -31,7 +30,7 @@ public final class ArmorVisibilityClient {
 
             if (client.player.isSneaking()) {
                 ArmorVisibility.save.all_armor_visibility_toggle = !ArmorVisibility.save.all_armor_visibility_toggle;
-                client.player.addChatMessage(new TranslatableText(
+                client.player.sendMessage(new TranslatableText(
                         "message." +
                             ArmorVisibility.MOD_ID +
                             ".all_armor_visibility_toggle." +
@@ -42,7 +41,7 @@ public final class ArmorVisibilityClient {
             }
 
             ArmorVisibility.save.my_armor_visibility_toggle = !ArmorVisibility.save.my_armor_visibility_toggle;
-            client.player.addChatMessage(new TranslatableText(
+            client.player.sendMessage(new TranslatableText(
                     "message." +
                         ArmorVisibility.MOD_ID +
                         ".my_armor_visibility_toggle." +
