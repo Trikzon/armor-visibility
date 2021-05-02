@@ -3,6 +3,7 @@ package com.trikzon.armor_visibility.client;
 import com.trikzon.armor_visibility.ArmorVisibility;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.options.KeyBinding;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.TranslatableText;
 import net.minecraft.util.Identifier;
 import org.lwjgl.glfw.GLFW;
@@ -24,6 +25,8 @@ public final class ArmorVisibilityClient {
         if (client.player == null) {
             return;
         }
+
+        client.player.playSound(SoundEvents.BLOCK_TRIPWIRE_CLICK_ON, 0.5f, 1.0f);
 
         if (keyBinding.isPressed() && !keyWasDown) {
             keyWasDown = true;
