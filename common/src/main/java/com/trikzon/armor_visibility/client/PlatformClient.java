@@ -2,6 +2,7 @@ package com.trikzon.armor_visibility.client;
 
 import me.shedaniel.architectury.annotations.ExpectPlatform;
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.client.options.KeyBinding;
 import net.minecraft.util.Identifier;
 
@@ -15,6 +16,11 @@ public class PlatformClient {
 
     @ExpectPlatform
     public static void registerClientTickEvent(Consumer<MinecraftClient> callback) {
+        throw new AssertionError();
+    }
+
+    @ExpectPlatform
+    public static void registerJoinEvent(Consumer<ClientPlayerEntity> callback) {
         throw new AssertionError();
     }
 }

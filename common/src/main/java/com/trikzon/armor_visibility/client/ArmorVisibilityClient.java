@@ -2,11 +2,14 @@ package com.trikzon.armor_visibility.client;
 
 import com.trikzon.armor_visibility.ArmorVisibility;
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.client.options.KeyBinding;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.TranslatableText;
 import net.minecraft.util.Identifier;
 import org.lwjgl.glfw.GLFW;
+
+import java.util.UUID;
 
 public final class ArmorVisibilityClient {
     private static KeyBinding keyBinding;
@@ -19,6 +22,7 @@ public final class ArmorVisibilityClient {
                 "key.categories.movement"
         );
         PlatformClient.registerClientTickEvent(ArmorVisibilityClient::onClientTick);
+        PlatformClient.registerJoinEvent(ArmorVisibilityClient::onJoin);
     }
 
     private static void onClientTick(MinecraftClient client) {
@@ -26,10 +30,11 @@ public final class ArmorVisibilityClient {
             return;
         }
 
-        client.player.playSound(SoundEvents.BLOCK_TRIPWIRE_CLICK_ON, 0.5f, 1.0f);
 
         if (keyBinding.isPressed() && !keyWasDown) {
             keyWasDown = true;
+
+            client.player.playSound(SoundEvents.BLOCK_TRIPWIRE_CLICK_ON, 0.5f, 1.0f);
 
             if (client.player.isSneaking()) {
                 ArmorVisibility.save.all_armor_visibility_toggle = !ArmorVisibility.save.all_armor_visibility_toggle;
@@ -55,5 +60,19 @@ public final class ArmorVisibilityClient {
         } else if (!keyBinding.isPressed() && keyWasDown) {
             keyWasDown = false;
         }
+    }
+
+    private static void onJoin(ClientPlayerEntity player) {
+        if (ArmorVisibility.save.show_join_message) {
+            player.sendSystemMessage(new TranslatableText(
+                    "message." + ArmorVisibility.MOD_ID + ".join",
+                    visibleToString(ArmorVisibility.save.my_armor_visibility_toggle),
+                    visibleToString(ArmorVisibility.save.all_armor_visibility_toggle)
+            ), UUID.randomUUID());
+        }
+    }
+
+    private static String visibleToString(boolean visible) {
+        return visible ? "Visible" : "Invisible";
     }
 }

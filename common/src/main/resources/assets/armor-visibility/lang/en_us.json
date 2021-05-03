@@ -7,5 +7,7 @@
   "message.armor-visibility.my_armor_visibility_toggle.true": "My Armor: Visible",
   "message.armor-visibility.my_armor_visibility_toggle.false": "My Armor: Invisible",
   "message.armor-visibility.all_armor_visibility_toggle.true": "All Armor: Visible",
-  "message.armor-visibility.all_armor_visibility_toggle.false": "All Armor: Invisible"
+  "message.armor-visibility.all_armor_visibility_toggle.false": "All Armor: Invisible",
+
+  "message.armor-visibility.join": "<\u00A76Armor Visibility\u00A7r> My Armor: %s - All Armor: %s"
 }
