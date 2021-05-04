@@ -63,13 +63,17 @@ public final class ArmorVisibilityClient {
     }
 
     private static void onJoin(ClientPlayerEntity player) {
-        if (ArmorVisibility.save.show_join_message) {
+        if (ArmorVisibility.save.show_join_message && isVisibilityToggled()) {
             player.sendSystemMessage(new TranslatableText(
                     "message." + ArmorVisibility.MOD_ID + ".join",
                     visibleToString(ArmorVisibility.save.my_armor_visibility_toggle),
                     visibleToString(ArmorVisibility.save.all_armor_visibility_toggle)
             ), UUID.randomUUID());
         }
+    }
+
+    private static boolean isVisibilityToggled() {
+        return !ArmorVisibility.save.my_armor_visibility_toggle || !ArmorVisibility.save.all_armor_visibility_toggle;
     }
 
     private static String visibleToString(boolean visible) {
