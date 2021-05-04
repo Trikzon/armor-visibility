@@ -2,6 +2,7 @@ package com.trikzon.armor_visibility.client;
 
 import com.trikzon.armor_visibility.ArmorVisibility;
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.client.options.KeyBinding;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.TranslatableText;
@@ -19,6 +20,7 @@ public final class ArmorVisibilityClient {
                 "key.categories.movement"
         );
         PlatformClient.registerClientTickEvent(ArmorVisibilityClient::onClientTick);
+        PlatformClient.registerJoinEvent(ArmorVisibilityClient::onJoin);
     }
 
     private static void onClientTick(MinecraftClient client) {
@@ -55,5 +57,19 @@ public final class ArmorVisibilityClient {
         } else if (!keyBinding.isPressed() && keyWasDown) {
             keyWasDown = false;
         }
+    }
+
+    private static void onJoin(ClientPlayerEntity player) {
+        if (ArmorVisibility.save.show_join_message) {
+            player.sendMessage(new TranslatableText(
+                    "message." + ArmorVisibility.MOD_ID + ".join",
+                    visibleToString(ArmorVisibility.save.my_armor_visibility_toggle),
+                    visibleToString(ArmorVisibility.save.all_armor_visibility_toggle)
+            ));
+        }
+    }
+
+    private static String visibleToString(boolean visible) {
+        return visible ? "Visible" : "Invisible";
     }
 }

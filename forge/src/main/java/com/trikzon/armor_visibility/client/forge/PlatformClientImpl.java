@@ -1,11 +1,14 @@
 package com.trikzon.armor_visibility.client.forge;
 
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.client.options.KeyBinding;
 import net.minecraft.client.util.InputUtil;
+import net.minecraft.entity.Entity;
 import net.minecraft.util.Identifier;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.TickEvent;
+import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 
@@ -37,5 +40,14 @@ public class PlatformClientImpl {
         for (KeyBinding keyBinding : keyBindings) {
             ClientRegistry.registerKeyBinding(keyBinding);
         }
+    }
+
+    public static void registerJoinEvent(Consumer<ClientPlayerEntity> callback) {
+        MinecraftForge.EVENT_BUS.<EntityJoinWorldEvent>addListener(e -> {
+            Entity entity = e.getEntity();
+            if (entity instanceof ClientPlayerEntity) {
+                callback.accept((ClientPlayerEntity) entity);
+            }
+        });
     }
 }

@@ -12,6 +12,7 @@ public class Save {
     public int version = 1;
     public boolean my_armor_visibility_toggle = true;
     public boolean all_armor_visibility_toggle = true;
+    public boolean show_join_message = true;
 
     public static Save load(File file) {
         if (file.exists()) {
