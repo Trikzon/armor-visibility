@@ -40,9 +40,9 @@ public final class ArmorVisibilityClient {
                 ArmorVisibility.save.all_armor_visibility_toggle = !ArmorVisibility.save.all_armor_visibility_toggle;
                 client.player.sendMessage(new TranslatableText(
                         "message." +
-                            ArmorVisibility.MOD_ID +
-                            ".all_armor_visibility_toggle." +
-                            ArmorVisibility.save.all_armor_visibility_toggle
+                                ArmorVisibility.MOD_ID +
+                                ".all_armor_visibility_toggle." +
+                                ArmorVisibility.save.all_armor_visibility_toggle
                 ), true);
                 ArmorVisibility.writeSaveFile();
                 return;
@@ -51,9 +51,9 @@ public final class ArmorVisibilityClient {
             ArmorVisibility.save.my_armor_visibility_toggle = !ArmorVisibility.save.my_armor_visibility_toggle;
             client.player.sendMessage(new TranslatableText(
                     "message." +
-                        ArmorVisibility.MOD_ID +
-                        ".my_armor_visibility_toggle." +
-                        ArmorVisibility.save.my_armor_visibility_toggle
+                            ArmorVisibility.MOD_ID +
+                            ".my_armor_visibility_toggle." +
+                            ArmorVisibility.save.my_armor_visibility_toggle
             ), true);
             ArmorVisibility.writeSaveFile();
 

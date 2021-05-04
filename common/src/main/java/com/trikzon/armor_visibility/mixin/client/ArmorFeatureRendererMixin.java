@@ -37,11 +37,10 @@ public abstract class ArmorFeatureRendererMixin
             if (!ArmorVisibility.save.all_armor_visibility_toggle) {
                 ci.cancel();
             }
-            if (
-                !ArmorVisibility.save.my_armor_visibility_toggle &&
-                livingEntity.equals(MinecraftClient.getInstance().player
-            )) {
-                ci.cancel();
+            if (!ArmorVisibility.save.my_armor_visibility_toggle) {
+                if (livingEntity.equals(MinecraftClient.getInstance().player)) {
+                    ci.cancel();
+                }
             }
         }
     }
