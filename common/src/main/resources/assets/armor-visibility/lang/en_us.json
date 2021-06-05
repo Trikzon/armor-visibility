@@ -1,7 +1,7 @@
 {
   "armor-visibility.discord": "Discord",
 
-  "key.category.armor-visibility": "Armor Visibility",
+  "key.categories.armor-visibility": "Armor Visibility",
   "key.armor-visibility.armor_visibility_toggle": "Toggle Armor Visibility",
 
   "message.armor-visibility.my_armor_visibility_toggle.true": "My Armor: Visible",
