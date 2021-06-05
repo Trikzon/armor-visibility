@@ -2,6 +2,7 @@ package com.trikzon.armor_visibility;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.annotations.SerializedName;
 
 import java.io.File;
 import java.io.FileReader;
@@ -10,9 +11,12 @@ import java.io.IOException;
 
 public class Save {
     public int version = 1;
-    public boolean my_armor_visibility_toggle = true;
-    public boolean all_armor_visibility_toggle = true;
-    public boolean show_join_message = true;
+    @SerializedName("my_armor_visibility_toggle")
+    public boolean myArmorVisibilityToggle = true;
+    @SerializedName("all_armor_visibility_toggle")
+    public boolean allArmorVisibilityToggle = true;
+    @SerializedName("show_join_message")
+    public boolean showJoinMessage = true;
 
     public static Save load(File file) {
         if (file.exists()) {
@@ -31,7 +35,6 @@ public class Save {
                 ArmorVisibility.LOGGER.info("Found deprecated save file. Updating.");
                 return new Save().writeSaveFile(file);
             }
-
             return save;
         } catch (IOException e) {
             ArmorVisibility.LOGGER.error("Failed to read from save file.");

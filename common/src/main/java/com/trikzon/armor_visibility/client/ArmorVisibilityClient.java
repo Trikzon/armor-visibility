@@ -19,7 +19,7 @@ public final class ArmorVisibilityClient {
         ArmorVisibilityClient.keyBinding = PlatformClient.registerKeyBinding(
                 new Identifier(ArmorVisibility.MOD_ID, "armor_visibility_toggle"),
                 GLFW.GLFW_KEY_V,
-                "key.categories.movement"
+                "key.categories." + ArmorVisibility.MOD_ID
         );
         PlatformClient.registerClientTickEvent(ArmorVisibilityClient::onClientTick);
         PlatformClient.registerJoinEvent(ArmorVisibilityClient::onJoin);
@@ -30,50 +30,47 @@ public final class ArmorVisibilityClient {
             return;
         }
 
-
         if (keyBinding.isPressed() && !keyWasDown) {
             keyWasDown = true;
 
             client.player.playSound(SoundEvents.BLOCK_TRIPWIRE_CLICK_ON, 0.5f, 1.0f);
 
             if (client.player.isSneaking()) {
-                ArmorVisibility.save.all_armor_visibility_toggle = !ArmorVisibility.save.all_armor_visibility_toggle;
+                ArmorVisibility.save.allArmorVisibilityToggle = !ArmorVisibility.save.allArmorVisibilityToggle;
                 client.player.sendMessage(new TranslatableText(
                         "message." +
                                 ArmorVisibility.MOD_ID +
                                 ".all_armor_visibility_toggle." +
-                                ArmorVisibility.save.all_armor_visibility_toggle
+                                ArmorVisibility.save.allArmorVisibilityToggle
                 ), true);
                 ArmorVisibility.writeSaveFile();
                 return;
             }
-
-            ArmorVisibility.save.my_armor_visibility_toggle = !ArmorVisibility.save.my_armor_visibility_toggle;
+            ArmorVisibility.save.myArmorVisibilityToggle = !ArmorVisibility.save.myArmorVisibilityToggle;
             client.player.sendMessage(new TranslatableText(
                     "message." +
                             ArmorVisibility.MOD_ID +
                             ".my_armor_visibility_toggle." +
-                            ArmorVisibility.save.my_armor_visibility_toggle
+                            ArmorVisibility.save.myArmorVisibilityToggle
             ), true);
             ArmorVisibility.writeSaveFile();
-
         } else if (!keyBinding.isPressed() && keyWasDown) {
             keyWasDown = false;
         }
     }
 
     private static void onJoin(ClientPlayerEntity player) {
-        if (ArmorVisibility.save.show_join_message && isVisibilityToggled()) {
+        if (ArmorVisibility.save.showJoinMessage && isVisibilityToggled()) {
             player.sendSystemMessage(new TranslatableText(
                     "message." + ArmorVisibility.MOD_ID + ".join",
-                    visibleToString(ArmorVisibility.save.my_armor_visibility_toggle),
-                    visibleToString(ArmorVisibility.save.all_armor_visibility_toggle)
+                    visibleToString(ArmorVisibility.save.myArmorVisibilityToggle),
+                    visibleToString(ArmorVisibility.save.allArmorVisibilityToggle)
             ), UUID.randomUUID());
         }
     }
 
     private static boolean isVisibilityToggled() {
-        return !ArmorVisibility.save.my_armor_visibility_toggle || !ArmorVisibility.save.all_armor_visibility_toggle;
+        return !ArmorVisibility.save.myArmorVisibilityToggle || !ArmorVisibility.save.allArmorVisibilityToggle;
     }
 
     private static String visibleToString(boolean visible) {

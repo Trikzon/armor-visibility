@@ -24,7 +24,7 @@ public class PlatformClientImpl {
                 String.format("key.%s.%s", id.getNamespace(), id.getPath()),
                 InputUtil.Type.KEYSYM,
                 key,
-                String.format("key.category.%s", id.getNamespace(), id.getPath())
+                category
         );
         keyBindings.add(keyBinding);
         return keyBinding;
