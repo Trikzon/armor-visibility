@@ -17,6 +17,8 @@ public class Save {
     public boolean allArmorVisibilityToggle = true;
     @SerializedName("show_join_message")
     public boolean showJoinMessage = true;
+    @SerializedName("keep_elytra_visible")
+    public boolean keepElytraVisible = false;
 
     public static Save load(File file) {
         if (file.exists()) {
