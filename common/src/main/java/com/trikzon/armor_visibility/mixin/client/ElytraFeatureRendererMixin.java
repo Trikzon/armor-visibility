@@ -33,7 +33,6 @@ public abstract class ElytraFeatureRendererMixin
             float f, float g, float h, float j, float k, float l,
             CallbackInfo ci
     ) {
-        System.out.println(ArmorVisibility.save.keepElytraVisible);
         if (!ArmorVisibility.save.keepElytraVisible) {
             if (livingEntity instanceof PlayerEntity) {
                 if (!ArmorVisibility.save.allArmorVisibilityToggle) {
