@@ -33,13 +33,15 @@ public abstract class ElytraFeatureRendererMixin
             float f, float g, float h, float j, float k, float l,
             CallbackInfo ci
     ) {
-        if (livingEntity instanceof PlayerEntity) {
-            if (!ArmorVisibility.save.allArmorVisibilityToggle) {
-                ci.cancel();
-            }
-            if (!ArmorVisibility.save.myArmorVisibilityToggle) {
-                if (livingEntity.equals(MinecraftClient.getInstance().player)) {
+        if (!ArmorVisibility.save.keepElytraVisible) {
+            if (livingEntity instanceof PlayerEntity) {
+                if (!ArmorVisibility.save.allArmorVisibilityToggle) {
                     ci.cancel();
+                }
+                if (!ArmorVisibility.save.myArmorVisibilityToggle) {
+                    if (livingEntity.equals(MinecraftClient.getInstance().player)) {
+                        ci.cancel();
+                    }
                 }
             }
         }
