@@ -9,7 +9,7 @@ When toggled (with `v` by default) your armor will stop rendering (including ely
 
 If you shift and press the toggle key (`V` by default) all player armor will stop rendering (including elytra).
 
-This mod works on vanilla servers too! This mod is only required by, and only works, on the client.
+This mod works on vanilla servers too! This mod is only required by and only works on the client.
 
 **Disclaimer:** Most servers have rules against the use of mods. I am not liable for any rule breakers.
 
