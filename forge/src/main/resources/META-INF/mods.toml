@@ -19,7 +19,7 @@ View yours and others' skins through armor.
 [[dependencies.armor-visibility]]
 modId = "forge"
 mandatory = true
-versionRange = "[31,)"
+versionRange = "[31.2.5,)"
 ordering = "NONE"
 side = "BOTH"
 
