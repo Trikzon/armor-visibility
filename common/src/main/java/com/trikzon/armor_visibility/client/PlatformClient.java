@@ -1,26 +1,26 @@
 package com.trikzon.armor_visibility.client;
 
 import dev.architectury.injectables.annotations.ExpectPlatform;
-import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.network.ClientPlayerEntity;
-import net.minecraft.client.option.KeyBinding;
-import net.minecraft.util.Identifier;
+import net.minecraft.client.KeyMapping;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.player.LocalPlayer;
+import net.minecraft.resources.ResourceLocation;
 
 import java.util.function.Consumer;
 
 public class PlatformClient {
     @ExpectPlatform
-    public static KeyBinding registerKeyBinding(Identifier id, int key, String category) {
+    public static KeyMapping registerKeyMapping(ResourceLocation resLoc, int key, String category) {
         throw new AssertionError();
     }
 
     @ExpectPlatform
-    public static void registerClientTickEvent(Consumer<MinecraftClient> callback) {
+    public static void registerClientTickEvent(Consumer<Minecraft> callback) {
         throw new AssertionError();
     }
 
     @ExpectPlatform
-    public static void registerJoinEvent(Consumer<ClientPlayerEntity> callback) {
+    public static void registerJoinEvent(Consumer<LocalPlayer> callback) {
         throw new AssertionError();
     }
 }

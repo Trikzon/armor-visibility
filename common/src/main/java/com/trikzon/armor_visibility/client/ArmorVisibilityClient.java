@@ -1,23 +1,23 @@
 package com.trikzon.armor_visibility.client;
 
 import com.trikzon.armor_visibility.ArmorVisibility;
-import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.network.ClientPlayerEntity;
-import net.minecraft.client.option.KeyBinding;
-import net.minecraft.sound.SoundEvents;
-import net.minecraft.text.TranslatableText;
-import net.minecraft.util.Identifier;
+import net.minecraft.client.KeyMapping;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.player.LocalPlayer;
+import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundEvents;
 import org.lwjgl.glfw.GLFW;
 
 import java.util.UUID;
 
-public final class ArmorVisibilityClient {
-    private static KeyBinding keyBinding;
+public class ArmorVisibilityClient {
+    private static KeyMapping keyMapping;
     private static boolean keyWasDown;
 
     public static void initialize() {
-        ArmorVisibilityClient.keyBinding = PlatformClient.registerKeyBinding(
-                new Identifier(ArmorVisibility.MOD_ID, "armor_visibility_toggle"),
+        ArmorVisibilityClient.keyMapping = PlatformClient.registerKeyMapping(
+                new ResourceLocation(ArmorVisibility.MOD_ID, "armor_visibility_toggle"),
                 GLFW.GLFW_KEY_V,
                 "key.categories." + ArmorVisibility.MOD_ID
         );
@@ -25,52 +25,53 @@ public final class ArmorVisibilityClient {
         PlatformClient.registerJoinEvent(ArmorVisibilityClient::onJoin);
     }
 
-    private static void onClientTick(MinecraftClient client) {
+    private static void onClientTick(Minecraft client) {
         if (client.player == null) {
             return;
         }
 
-        if (keyBinding.isPressed() && !keyWasDown) {
+        if (keyMapping.isDown() && !keyWasDown) {
             keyWasDown = true;
 
-            client.player.playSound(SoundEvents.BLOCK_TRIPWIRE_CLICK_ON, 0.5f, 1.0f);
+            // TODO: Change sound depending on whether being toggled on or off.
+            client.player.playSound(SoundEvents.TRIPWIRE_CLICK_ON, 0.5f, 1.0f);
 
-            if (client.player.isSneaking()) {
-                ArmorVisibility.save.allArmorVisibilityToggle = !ArmorVisibility.save.allArmorVisibilityToggle;
-                client.player.sendMessage(new TranslatableText(
+            if (client.player.isShiftKeyDown()) {
+                ArmorVisibility.saveFile.allArmorVisibilityToggle = !ArmorVisibility.saveFile.allArmorVisibilityToggle;
+                client.player.displayClientMessage(new TranslatableComponent(
                         "message." +
                                 ArmorVisibility.MOD_ID +
                                 ".all_armor_visibility_toggle." +
-                                ArmorVisibility.save.allArmorVisibilityToggle
+                                ArmorVisibility.saveFile.allArmorVisibilityToggle
                 ), true);
                 ArmorVisibility.writeSaveFile();
                 return;
             }
-            ArmorVisibility.save.myArmorVisibilityToggle = !ArmorVisibility.save.myArmorVisibilityToggle;
-            client.player.sendMessage(new TranslatableText(
+            ArmorVisibility.saveFile.myArmorVisibilityToggle = !ArmorVisibility.saveFile.myArmorVisibilityToggle;
+            client.player.displayClientMessage(new TranslatableComponent(
                     "message." +
                             ArmorVisibility.MOD_ID +
                             ".my_armor_visibility_toggle." +
-                            ArmorVisibility.save.myArmorVisibilityToggle
+                            ArmorVisibility.saveFile.myArmorVisibilityToggle
             ), true);
             ArmorVisibility.writeSaveFile();
-        } else if (!keyBinding.isPressed() && keyWasDown) {
+        } else if (!keyMapping.isDown() && keyWasDown) {
             keyWasDown = false;
         }
     }
 
-    private static void onJoin(ClientPlayerEntity player) {
-        if (ArmorVisibility.save.showJoinMessage && isVisibilityToggled()) {
-            player.sendSystemMessage(new TranslatableText(
+    private static void onJoin(LocalPlayer player) {
+        if (ArmorVisibility.saveFile.showJoinMessage && isVisibilityToggled()) {
+            player.sendMessage(new TranslatableComponent(
                     "message." + ArmorVisibility.MOD_ID + ".join",
-                    visibleToString(ArmorVisibility.save.myArmorVisibilityToggle),
-                    visibleToString(ArmorVisibility.save.allArmorVisibilityToggle)
+                    visibleToString(ArmorVisibility.saveFile.myArmorVisibilityToggle),
+                    visibleToString(ArmorVisibility.saveFile.allArmorVisibilityToggle)
             ), UUID.randomUUID());
         }
     }
 
     private static boolean isVisibilityToggled() {
-        return !ArmorVisibility.save.myArmorVisibilityToggle || !ArmorVisibility.save.allArmorVisibilityToggle;
+        return !ArmorVisibility.saveFile.myArmorVisibilityToggle || !ArmorVisibility.saveFile.allArmorVisibilityToggle;
     }
 
     private static String visibleToString(boolean visible) {

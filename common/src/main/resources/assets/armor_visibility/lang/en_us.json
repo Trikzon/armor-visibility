@@ -1,0 +1,13 @@
+{
+  "armor_visibility.discord": "Discord",
+
+  "key.categories.armor_visibility": "Armor Visibility",
+  "key.armor_visibility.armor_visibility_toggle": "Toggle Armor Visibility",
+
+  "message.armor_visibility.my_armor_visibility_toggle.true": "My Armor: Visible",
+  "message.armor_visibility.my_armor_visibility_toggle.false": "My Armor: Invisible",
+  "message.armor_visibility.all_armor_visibility_toggle.true": "All Armor: Visible",
+  "message.armor_visibility.all_armor_visibility_toggle.false": "All Armor: Invisible",
+
+  "message.armor_visibility.join": "<\u00A76Armor Visibility\u00A7r> My Armor: %s - All Armor: %s"
+}

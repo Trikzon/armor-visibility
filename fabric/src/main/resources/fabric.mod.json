@@ -1,37 +1,31 @@
 {
-    "schemaVersion": 1,
-    "id": "armor-visibility",
-    "version": "${version}",
-    "name": "Armor Visibility",
-    "description": "View yours and others' skins through armor.",
-    "authors": [
-      "Trikzon"
-    ],
-    "contact": {
-        "homepage": "https://www.curseforge.com/minecraft/mc-mods/armor-visibility",
-        "issues": "https://github.com/trikzon/armor-visibility/issues",
-        "sources": "https://github.com/dodogang/armor-visibility"
-    },
-    "license": "MIT; Assets licensed as All Rights Reserved",
-    "icon": "assets/armor-visibility/icon.png",
-    "environment": "*",
-    "entrypoints": {
-        "client": [
-            "com.trikzon.armor_visibility.client.fabric.ArmorVisibilityClientFabric"
-        ]
-    },
-    "mixins": [
-        "armor-visibility.mixins.json"
-    ],
-    "depends": {
-        "fabricloader": ">=0.11.3",
-        "fabric": ">=0.34.9",
-        "minecraft": ">=1.17"
-    },
-    "suggests": {
-        "flamingo": "*"
-    },
-    "custom": {
-        "modmenu:clientsideOnly": true
-    }
+  "schemaVersion": 1,
+  "id": "armor_visibility",
+  "version": "${version}",
+  "name": "Armor Visibility",
+  "description": "View yours and others' skins through armor.",
+  "authors": [
+    "Trikzon"
+  ],
+  "contact": {
+    "homepage": "https://curseforge.com/minecraft/mc-mods/armor-visibility",
+    "issues": "https://github.com/trikzon/armor-visibility/issues",
+    "sources": "https://github.com/trikzon/armor-visibility"
+  },
+  "license": "MIT; Assets licensed as All Rights Reserved",
+  "icon": "assets/armor_visibility/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "client": [
+      "com.trikzon.armor_visibility.client.fabric.ArmorVisibilityClientFabric"
+    ]
+  },
+  "mixins": [
+    "armor_visibility.mixins.json",
+    "armor_visibility-common.mixins.json"
+  ],
+  "depends": {
+    "fabric": "*",
+    "minecraft": ">=1.18"
+  }
 }

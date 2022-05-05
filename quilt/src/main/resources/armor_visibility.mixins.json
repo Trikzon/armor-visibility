@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "package": "com.trikzon.armor_visibility.mixin.quilt",
+  "compatibilityLevel": "JAVA_16",
+  "client": [
+  ],
+  "mixins": [
+    "com.trikzon.armor_visibility.client.mixin.quilt.ExampleMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

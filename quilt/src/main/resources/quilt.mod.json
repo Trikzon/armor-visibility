@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "mixins": [
+    "armor_visibility.mixins.json",
+    "armor_visibility-common.mixins.json"
+  ],
+  "quilt_loader": {
+    "group": "${group}",
+    "id": "armor_visibility",
+    "version": "${version}",
+    "name": "Armor Visibility",
+    "description": "View yours and others' skins through armor.",
+    "authors": ["Trikzon"],
+    "contact": {
+      "homepage": "https://modrinth.com/mod/armor-visibility",
+      "issues": "https://github.com/trikzon/armor-visibility/issues",
+      "sources": "https://github.com/trikzon/armor-visibility"
+    },
+    "license": "MIT; Assets licensed as All Rights Reserved",
+    "icon": "assets/armor_visibility/icon.png",
+    "intermediate_mappings": "net.fabricmc:intermediary",
+    "environment": "*",
+    "entrypoints": {
+      "client_init": [
+        "com.trikzon.armor_visibility.client.quilt.ArmorVisibilityClientQuilt"
+      ]
+    },
+    "depends": [
+      {
+        "id": "quilt_loader",
+        "version": "*"
+      },
+      {
+        "id": "quilt_base",
+        "version": "*"
+      },
+      {
+        "id": "minecraft",
+        "version": ">=1.18"
+      }
+    ]
+  }
+}
