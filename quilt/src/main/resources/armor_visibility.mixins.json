@@ -5,7 +5,6 @@
   "client": [
   ],
   "mixins": [
-    "com.trikzon.armor_visibility.client.mixin.quilt.ExampleMixin"
   ],
   "injectors": {
     "defaultRequire": 1

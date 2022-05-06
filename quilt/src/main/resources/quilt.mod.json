@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "mixins": [
+  "mixin": [
     "armor_visibility.mixins.json",
     "armor_visibility-common.mixins.json"
   ],
