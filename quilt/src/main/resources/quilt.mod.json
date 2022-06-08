@@ -8,16 +8,20 @@
     "group": "${group}",
     "id": "armor_visibility",
     "version": "${version}",
-    "name": "Armor Visibility",
-    "description": "View yours and others' skins through armor.",
-    "authors": ["Trikzon"],
-    "contact": {
-      "homepage": "https://modrinth.com/mod/armor-visibility",
-      "issues": "https://github.com/trikzon/armor-visibility/issues",
-      "sources": "https://github.com/trikzon/armor-visibility"
+    "metadata": {
+      "name": "Armor Visibility",
+      "description": "View yours and others' skins through armor.",
+      "contributors": {
+        "Trikzon": "Owner"
+      },
+      "contact": {
+        "homepage": "https://modrinth.com/mod/armor-visibility",
+        "issues": "https://github.com/trikzon/armor-visibility/issues",
+        "sources": "https://github.com/trikzon/armor-visibility"
+      },
+      "license": "MIT",
+      "icon": "assets/armor_visibility/icon.png"
     },
-    "license": "MIT; Assets licensed as All Rights Reserved",
-    "icon": "assets/armor_visibility/icon.png",
     "intermediate_mappings": "net.fabricmc:intermediary",
     "environment": "*",
     "entrypoints": {
