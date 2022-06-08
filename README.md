@@ -54,3 +54,5 @@ Want clarification or explicit permission? Contact me on [Discord](https://disco
 - Report issues here: https://github.com/Trikzon/armor-visibility/issues
 - Join my discord: https://discord.gg/aqXkvbJ
 - You can include this mod in your modpack as long as you don't claim the mod as your own.
+
+[<img src="https://user-images.githubusercontent.com/14358394/115450238-f39e8100-a21b-11eb-89d0-fa4b82cdbce8.png" width="200">](https://ko-fi.com/trikzon)
