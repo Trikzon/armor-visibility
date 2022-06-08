@@ -9,7 +9,6 @@ import net.minecraft.client.renderer.entity.RenderLayerParent;
 import net.minecraft.client.renderer.entity.layers.HumanoidArmorLayer;
 import net.minecraft.client.renderer.entity.layers.RenderLayer;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -37,14 +36,11 @@ public abstract class HumanoidArmorLayerMixin
             float f, float g, float h, float j, float k, float l,
             CallbackInfo ci
     ) {
-        if (livingEntity instanceof Player) {
-            if (!ArmorVisibility.saveFile.allArmorVisibilityToggle) {
+        if (ArmorVisibility.saveFile.hideAllArmorToggle) {
+            ci.cancel();
+        } else if (ArmorVisibility.saveFile.hideMyArmorToggle) {
+            if (livingEntity.equals(Minecraft.getInstance().player)) {
                 ci.cancel();
-            }
-            if (!ArmorVisibility.saveFile.myArmorVisibilityToggle) {
-                if (livingEntity.equals(Minecraft.getInstance().player)) {
-                    ci.cancel();
-                }
             }
         }
     }

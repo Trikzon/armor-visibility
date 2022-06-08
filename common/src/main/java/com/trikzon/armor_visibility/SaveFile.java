@@ -10,11 +10,11 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class SaveFile {
-    public int version = 1;
-    @SerializedName("my_armor_visibility_toggle")
-    public boolean myArmorVisibilityToggle = true;
-    @SerializedName("all_armor_visibility_toggle")
-    public boolean allArmorVisibilityToggle = true;
+    public int version = 2;
+    @SerializedName("hide_all_armor_toggle")
+    public boolean hideAllArmorToggle = false;
+    @SerializedName("hide_my_armor_toggle")
+    public boolean hideMyArmorToggle = false;
     @SerializedName("show_join_message")
     public boolean showJoinMessage = true;
     @SerializedName("keep_elytra_visible")
@@ -29,7 +29,7 @@ public class SaveFile {
             Gson gson = new Gson();
             SaveFile saveFile = gson.fromJson(reader, SaveFile.class);
 
-            if (saveFile.version < 1) {
+            if (saveFile.version < 2) {
                 ArmorVisibility.LOGGER.info("Found deprecated save file. Updating.");
                 return new SaveFile().write(file);
             }

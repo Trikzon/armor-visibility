@@ -33,27 +33,36 @@ public class ArmorVisibilityClient {
         if (keyMapping.isDown() && !keyWasDown) {
             keyWasDown = true;
 
-            // TODO: Change sound depending on whether being toggled on or off.
-            client.player.playSound(SoundEvents.TRIPWIRE_CLICK_ON, 0.5f, 1.0f);
+            if (ArmorVisibility.saveFile.hideAllArmorToggle || ArmorVisibility.saveFile.hideMyArmorToggle) {
+                client.player.playSound(SoundEvents.TRIPWIRE_CLICK_OFF, 0.5f, 1.0f);
 
-            if (client.player.isShiftKeyDown()) {
-                ArmorVisibility.saveFile.allArmorVisibilityToggle = !ArmorVisibility.saveFile.allArmorVisibilityToggle;
+                ArmorVisibility.saveFile.hideAllArmorToggle = false;
+                ArmorVisibility.saveFile.hideMyArmorToggle = false;
+
                 client.player.displayClientMessage(new TranslatableComponent(
                         "message." +
                                 ArmorVisibility.MOD_ID +
-                                ".all_armor_visibility_toggle." +
-                                ArmorVisibility.saveFile.allArmorVisibilityToggle
+                                ".show_armor"
                 ), true);
-                ArmorVisibility.writeSaveFile();
-                return;
+            } else {
+                client.player.playSound(SoundEvents.TRIPWIRE_CLICK_ON, 0.5f, 1.0f);
+
+                if (client.player.isShiftKeyDown()) {
+                    ArmorVisibility.saveFile.hideAllArmorToggle = true;
+                    client.player.displayClientMessage(new TranslatableComponent(
+                            "message." +
+                                    ArmorVisibility.MOD_ID +
+                                    ".hide_all_armor"
+                    ), true);
+                } else {
+                    ArmorVisibility.saveFile.hideMyArmorToggle = true;
+                    client.player.displayClientMessage(new TranslatableComponent(
+                            "message." +
+                                    ArmorVisibility.MOD_ID +
+                                    ".hide_my_armor"
+                    ), true);
+                }
             }
-            ArmorVisibility.saveFile.myArmorVisibilityToggle = !ArmorVisibility.saveFile.myArmorVisibilityToggle;
-            client.player.displayClientMessage(new TranslatableComponent(
-                    "message." +
-                            ArmorVisibility.MOD_ID +
-                            ".my_armor_visibility_toggle." +
-                            ArmorVisibility.saveFile.myArmorVisibilityToggle
-            ), true);
             ArmorVisibility.writeSaveFile();
         } else if (!keyMapping.isDown() && keyWasDown) {
             keyWasDown = false;
@@ -61,20 +70,18 @@ public class ArmorVisibilityClient {
     }
 
     private static void onJoin(LocalPlayer player) {
-        if (ArmorVisibility.saveFile.showJoinMessage && isVisibilityToggled()) {
+        if (ArmorVisibility.saveFile.showJoinMessage && isArmorHidden()) {
             player.sendMessage(new TranslatableComponent(
-                    "message." + ArmorVisibility.MOD_ID + ".join",
-                    visibleToString(ArmorVisibility.saveFile.myArmorVisibilityToggle),
-                    visibleToString(ArmorVisibility.saveFile.allArmorVisibilityToggle)
+                    "message." +
+                            ArmorVisibility.MOD_ID +
+                            "." +
+                            (ArmorVisibility.saveFile.hideAllArmorToggle ? "all" : "my") +
+                            "_join"
             ), UUID.randomUUID());
         }
     }
 
-    private static boolean isVisibilityToggled() {
-        return !ArmorVisibility.saveFile.myArmorVisibilityToggle || !ArmorVisibility.saveFile.allArmorVisibilityToggle;
-    }
-
-    private static String visibleToString(boolean visible) {
-        return visible ? "Visible" : "Invisible";
+    private static boolean isArmorHidden() {
+        return ArmorVisibility.saveFile.hideAllArmorToggle || ArmorVisibility.saveFile.hideMyArmorToggle;
     }
 }
