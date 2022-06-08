@@ -1,5 +1,5 @@
 modLoader = "javafml"
-loaderVersion = "[38,)"
+loaderVersion = "[36,)"
 issueTrackerURL = "https://github.com/trikzon/armor-visibility/issues"
 license = "MIT; Assets licensed as All Rights Reserved"
 
@@ -16,13 +16,13 @@ View yours and others' skins through armor.
 [[dependencies.armor_visibility]]
 modId = "forge"
 mandatory = true
-versionRange = "[38,)"
+versionRange = "[36,)"
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.armor_visibility]]
 modId = "minecraft"
 mandatory = true
-versionRange = "[1.18,)"
+versionRange = "[1.17,)"
 ordering = "NONE"
 side = "BOTH"
