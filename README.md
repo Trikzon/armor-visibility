@@ -5,13 +5,13 @@
 
 ## What does this mod do?
 
-When toggled (with `v` by default) your armor will stop rendering (including elytra).
+When toggled (with `v` by default) your armor will stop rendering (including elytra and carved pumpkins).
 
-If you shift and press the toggle key (`V` by default) all player armor will stop rendering (including elytra).
+If you shift and press the toggle key (`V` by default) all player armor will stop rendering (including elytra and carved pumpkins).
 
 This mod works on vanilla servers too! This mod is only required by and only works on the client.
 
-**Disclaimer:** Most servers have rules against the use of mods. I am not liable for any rule breakers.
+**Disclaimer:** Most servers have rules against the use of mods. I am not liable if you use this mod on a server that bans client side mods.
 
 ## Configuration
 
@@ -20,9 +20,9 @@ The configuration file is located at `.minecraft/config/armor-visibility.json`.
 The default config file:
 ```json
 {
-    "version": 1,
-    "my_armor_visibility_toggle": true,
-    "all_armor_visibility_toggle": true,
+    "version": 2,
+    "hide_my_armor_toggle": true,
+    "hide_all_armor_toggle": true,
     "show_join_message": true,
     "keep_elytra_visible": false
 }
@@ -43,6 +43,7 @@ All assets found in the following directories are licensed under All Rights Rese
 - ./common/src/main/resources/assets/
 - ./fabric/src/main/resources/assets/
 - ./forge/src/main/resources/assets/
+- ./quilt/src/main/resources/assets/
 
 Everything else is licensed under MIT.
 
