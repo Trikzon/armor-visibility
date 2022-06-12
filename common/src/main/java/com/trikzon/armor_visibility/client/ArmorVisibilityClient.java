@@ -4,12 +4,10 @@ import com.trikzon.armor_visibility.ArmorVisibility;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;
-import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
 import org.lwjgl.glfw.GLFW;
-
-import java.util.UUID;
 
 public class ArmorVisibilityClient {
     private static KeyMapping keyMapping;
@@ -39,7 +37,7 @@ public class ArmorVisibilityClient {
                 ArmorVisibility.saveFile.hideAllArmorToggle = false;
                 ArmorVisibility.saveFile.hideMyArmorToggle = false;
 
-                client.player.displayClientMessage(new TranslatableComponent(
+                client.player.displayClientMessage(Component.translatable(
                         "message." +
                                 ArmorVisibility.MOD_ID +
                                 ".show_armor"
@@ -49,14 +47,14 @@ public class ArmorVisibilityClient {
 
                 if (client.player.isShiftKeyDown()) {
                     ArmorVisibility.saveFile.hideAllArmorToggle = true;
-                    client.player.displayClientMessage(new TranslatableComponent(
+                    client.player.displayClientMessage(Component.translatable(
                             "message." +
                                     ArmorVisibility.MOD_ID +
                                     ".hide_all_armor"
                     ), true);
                 } else {
                     ArmorVisibility.saveFile.hideMyArmorToggle = true;
-                    client.player.displayClientMessage(new TranslatableComponent(
+                    client.player.displayClientMessage(Component.translatable(
                             "message." +
                                     ArmorVisibility.MOD_ID +
                                     ".hide_my_armor"
@@ -71,13 +69,13 @@ public class ArmorVisibilityClient {
 
     private static void onJoin(LocalPlayer player) {
         if (ArmorVisibility.saveFile.showJoinMessage && isArmorHidden()) {
-            player.sendMessage(new TranslatableComponent(
+            player.sendSystemMessage(Component.translatable(
                     "message." +
                             ArmorVisibility.MOD_ID +
                             "." +
                             (ArmorVisibility.saveFile.hideAllArmorToggle ? "all" : "my") +
                             "_join"
-            ), UUID.randomUUID());
+            ));
         }
     }
 
