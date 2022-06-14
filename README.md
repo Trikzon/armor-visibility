@@ -33,10 +33,6 @@ The only options a player should touch are:
 `show_join_message`: Whether to print to chat when joining a world if armor visibility has been toggled.
 `keep_elytra_visible`: Whether elytra should stay visible when armor visibility is toggled.
 
-## Supported Versions
-
-![](https://raw.githubusercontent.com/Trikzon/lts-schedule/master/out/armor-visibility.png)
-
 ## License
 
 All assets found in the following directories are licensed under All Rights Reserved.
