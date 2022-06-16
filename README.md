@@ -1,5 +1,7 @@
 # Armor-Visibility
-[![](http://cf.way2muchnoise.eu/full_387962_Downloads.svg)](https://www.curseforge.com/minecraft/mc-mods/armor-visibility) [![](http://cf.way2muchnoise.eu/versions/387962.svg)](https://www.curseforge.com/minecraft/mc-mods/armor-visibility)
+[![](http://cf.way2muchnoise.eu/full_387962_Downloads.svg)](https://www.curseforge.com/minecraft/mc-mods/armor-visibility) 
+[![](https://modrinth-utils.vercel.app/api/badge/downloads/?id=armor-visibility&logo=true)](https://www.modrinth.com/mod/armor-visibility)
+[![](http://cf.way2muchnoise.eu/versions/387962.svg)](https://www.curseforge.com/minecraft/mc-mods/armor-visibility)
 
 [YouTube Video Demonstration](https://youtu.be/y9PXSRNULdw)
 
