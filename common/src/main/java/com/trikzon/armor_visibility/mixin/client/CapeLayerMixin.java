@@ -25,7 +25,7 @@ public abstract class CapeLayerMixin extends RenderLayer<AbstractClientPlayer, P
             at = @At("HEAD"),
             cancellable = true
     )
-    private void armor_visibility_renderElytra(
+    private void armor_visibility_renderCape(
             PoseStack poseStack,
             MultiBufferSource multiBufferSource,
             int i,
@@ -33,7 +33,7 @@ public abstract class CapeLayerMixin extends RenderLayer<AbstractClientPlayer, P
             float f, float g, float h, float j, float k, float l,
             CallbackInfo ci
     ) {
-        if (ArmorVisibility.saveFile.keepElytraVisible) return;
+        if (ArmorVisibility.saveFile.keepCapeVisible) return;
 
         if (ArmorVisibility.saveFile.hideAllArmorToggle) {
             ci.cancel();
