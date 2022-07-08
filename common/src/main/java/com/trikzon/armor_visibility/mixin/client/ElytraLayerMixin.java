@@ -33,6 +33,8 @@ public abstract class ElytraLayerMixin<T extends LivingEntity, M extends EntityM
             float f, float g, float h, float j, float k, float l,
             CallbackInfo ci
     ) {
+        if (ArmorVisibility.saveFile.keepElytraVisible) return;
+
         if (ArmorVisibility.saveFile.hideAllArmorToggle) {
             ci.cancel();
         } else if (ArmorVisibility.saveFile.hideMyArmorToggle) {
