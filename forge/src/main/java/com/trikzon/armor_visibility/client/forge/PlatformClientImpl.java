@@ -6,11 +6,10 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
-import net.minecraftforge.client.ClientRegistry;
+import net.minecraftforge.client.event.RegisterKeyMappingsEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.TickEvent;
-import net.minecraftforge.event.entity.EntityJoinWorldEvent;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
+import net.minecraftforge.event.entity.EntityJoinLevelEvent;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,14 +35,14 @@ public class PlatformClientImpl {
         });
     }
 
-    public static void onClientSetup(final FMLClientSetupEvent event) {
+    public static void onRegisterKeyMappings(final RegisterKeyMappingsEvent event) {
         for (KeyMapping keyMapping : keyMappings) {
-            ClientRegistry.registerKeyBinding(keyMapping);
+            event.register(keyMapping);
         }
     }
 
     public static void registerJoinEvent(Consumer<LocalPlayer> callback) {
-        MinecraftForge.EVENT_BUS.<EntityJoinWorldEvent>addListener(e -> {
+        MinecraftForge.EVENT_BUS.<EntityJoinLevelEvent>addListener(e -> {
             Entity entity = e.getEntity();
             if (entity instanceof LocalPlayer) {
                 callback.accept((LocalPlayer) entity);

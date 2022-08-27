@@ -9,6 +9,6 @@ public class ArmorVisibilityClientForge {
         ArmorVisibility.initialize();
         ArmorVisibilityClient.initialize();
 
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(PlatformClientImpl::onClientSetup);
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(PlatformClientImpl::onRegisterKeyMappings);
     }
 }
