@@ -27,15 +27,16 @@ The default config file:
     "hide_all_armor_toggle": true,
     "show_join_message": true,
     "keep_elytra_visible": false,
-    "keep_cape_visible": true
+    "keep_cape_visible": true,
+    "players_only": true
 }
 ```
 
 The only options a player should touch are:
-
-`show_join_message`: Whether to print to chat when joining a world if armor visibility has been toggled.
-`keep_elytra_visible`: Whether elytra should stay visible when armor visibility is toggled.
-`keep_cape_visible`: Whether capes should stay visible when armor visibility it toggled.
+- `show_join_message`: Whether to print to chat when joining a world if armor visibility has been toggled.
+- `keep_elytra_visible`: Whether elytra should stay visible when armor visibility is toggled.
+- `keep_cape_visible`: Whether capes should stay visible when armor visibility it toggled.
+- `players_only`: Whether to toggle armor visibility for entities other than the player.
 
 ## License
 
