@@ -21,6 +21,8 @@ public class SaveFile {
     public boolean keepElytraVisible = false;
     @SerializedName("keep_cape_visible")
     public boolean keepCapeVisible = true;
+    @SerializedName("players_only")
+    public boolean playersOnly = true;
 
     public static SaveFile read(File file) {
         if (!file.exists()) {
