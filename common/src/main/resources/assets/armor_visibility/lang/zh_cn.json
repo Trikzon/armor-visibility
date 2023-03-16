@@ -1,13 +1,8 @@
 {
-  "armor_visibility.discord": "Discord",
+    "key.categories.armor_visibility": "Armor Visibility",
+    "key.armor_visibility.armor_visibility_toggle": "切换护甲显示",
 
-  "key.categories.armor_visibility": "Armor Visibility",
-  "key.armor_visibility.armor_visibility_toggle": "切换护甲显示",
-
-  "message.armor_visibility.show_armor": "护甲：可视",
-  "message.armor_visibility.hide_all_armor": "所有人的护甲：隐藏",
-  "message.armor_visibility.hide_my_armor": "自己的护甲：隐藏",
-
-  "message.armor_visibility.all_join": "<\u00A76Armor Visibility\u00A7r> 所有人的护甲：隐藏",
-  "message.armor_visibility.my_join": "<\u00A76Armor Visibility\u00A7r> 自己的护甲：显示"
+    "message.armor_visibility.show_armor": "护甲：可视",
+    "message.armor_visibility.hide_all_armor": "所有人的护甲：隐藏",
+    "message.armor_visibility.hide_my_armor": "自己的护甲：隐藏"
 }

@@ -1,60 +1,40 @@
-# Armor-Visibility
-[![](http://cf.way2muchnoise.eu/full_387962_Downloads.svg)](https://www.curseforge.com/minecraft/mc-mods/armor-visibility) 
-[![](https://modrinth-utils.vercel.app/api/badge/downloads/?id=armor-visibility&logo=true)](https://www.modrinth.com/mod/armor-visibility)
+# Armor Visibility
+[![](http://cf.way2muchnoise.eu/full_387962_downloads.svg)](https://www.curseforge.com/minecraft/mc-mods/armor-visibility)
+[![](https://img.shields.io/modrinth/dt/armor-visibility?logo=modrinth&style=flat)](https://www.modrinth.com/mod/armor-visibility)
 [![](http://cf.way2muchnoise.eu/versions/387962.svg)](https://www.curseforge.com/minecraft/mc-mods/armor-visibility)
 
-[YouTube Video Demonstration](https://youtu.be/y9PXSRNULdw)
+View yours and others' skins through armor.
 
-## What does this mod do?
+When toggled (with `v` by default) your armor will stop rendering.
 
-When toggled (with `v` by default) your armor will stop rendering (including elytra and carved pumpkins).
+If you shift and press the toggle key (`V` by default) all player armor will stop rendering.
 
-If you shift and press the toggle key (`V` by default) all player armor will stop rendering (including elytra and carved pumpkins).
+This mod is only client-side and won't affect the rendering of armor on other clients.
 
-This mod works on vanilla servers too! This mod is only required by and only works on the client.
-
-**Disclaimer:** Most servers have rules against the use of mods. I am not liable if you use this mod on a server that bans client side mods.
+[YouTube Demonstration](https://youtu.be/y9PXSRNULdw)
 
 ## Configuration
+The configuration file is located at `.minecraft/config/armor_visibility.json`.
 
-The configuration file is located at `.minecraft/config/armor-visibility.json`.
-
-The default config file:
+### Default Config File
 ```json
 {
-    "version": 2,
-    "hide_my_armor_toggle": true,
-    "hide_all_armor_toggle": true,
-    "show_join_message": true,
-    "keep_elytra_visible": false,
-    "keep_cape_visible": true,
-    "players_only": true
+  "version": 3,
+  "keep_elytra_visible": false,
+  "keep_cape_visible": true,
+  "players_only": true
 }
 ```
 
-The only options a player should touch are:
-- `show_join_message`: Whether to print to chat when joining a world if armor visibility has been toggled.
-- `keep_elytra_visible`: Whether elytra should stay visible when armor visibility is toggled.
-- `keep_cape_visible`: Whether capes should stay visible when armor visibility it toggled.
-- `players_only`: Whether to toggle armor visibility for entities other than the player.
+### Config Option Descriptions
+- `keep_elytra_visible`: When true, elytra will remain visible.
+- `keep_cape_visible`: When true, capes will remain visible.
+- `players_only`: When true, armor rendering on other entities (zombies, armor stands, etc.) won't be toggle-able.
 
-## License
+---
 
-All assets found in the following directories are licensed under All Rights Reserved.
-- ./common/src/main/resources/assets/
-- ./fabric/src/main/resources/assets/
-- ./forge/src/main/resources/assets/
-- ./quilt/src/main/resources/assets/
+Report any issues on [GitHub](https://github.com/Trikzon/armor-visibility/issues). Chat on [Discord](https://discord.gg/aUwZKagWh2) in the `#mc-mods` channel.
 
-Everything else is licensed under MIT.
+Support the development of my mods on [Ko-fi](https://ko-fi.com/X7X8D56YI).
 
-Want clarification or explicit permission? Contact me on [Discord](https://discord.gg/aqXkvbJ).
-
-## Other Information
-
-- Report issues here: https://github.com/Trikzon/armor-visibility/issues
-- Join my discord: https://discord.gg/aqXkvbJ
-- You can include this mod in your modpack as long as you don't claim the mod as your own.
-
-
-[<img src="https://user-images.githubusercontent.com/14358394/115450238-f39e8100-a21b-11eb-89d0-fa4b82cdbce8.png" width="200">](https://ko-fi.com/trikzon)
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/X7X8D56YI)

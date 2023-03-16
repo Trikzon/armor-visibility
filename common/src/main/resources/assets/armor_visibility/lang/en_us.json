@@ -1,13 +1,8 @@
 {
-  "armor_visibility.discord": "Discord",
+    "key.categories.armor_visibility": "Armor Visibility",
+    "key.armor_visibility.armor_visibility_toggle": "Toggle Armor Visibility",
 
-  "key.categories.armor_visibility": "Armor Visibility",
-  "key.armor_visibility.armor_visibility_toggle": "Toggle Armor Visibility",
-
-  "message.armor_visibility.show_armor": "Armor: Visible",
-  "message.armor_visibility.hide_all_armor": "All Armor: Hidden",
-  "message.armor_visibility.hide_my_armor": "My Armor: Hidden",
-
-  "message.armor_visibility.all_join": "<\u00A76Armor Visibility\u00A7r> All Armor: Hidden",
-  "message.armor_visibility.my_join": "<\u00A76Armor Visibility\u00A7r> My Armor: Hidden"
+    "message.armor_visibility.show_armor": "Armor: Visible",
+    "message.armor_visibility.hide_all_armor": "All Armor: Hidden",
+    "message.armor_visibility.hide_my_armor": "My Armor: Hidden"
 }

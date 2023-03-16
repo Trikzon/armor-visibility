@@ -1,11 +1,7 @@
 {
   "schema_version": 1,
-  "mixin": [
-    "armor_visibility.mixins.json",
-    "armor_visibility-common.mixins.json"
-  ],
   "quilt_loader": {
-    "group": "${group}",
+    "group": "com.diontryban.mods",
     "id": "armor_visibility",
     "version": "${version}",
     "metadata": {
@@ -15,33 +11,38 @@
         "Trikzon": "Owner"
       },
       "contact": {
-        "homepage": "https://modrinth.com/mod/armor-visibility",
-        "issues": "https://github.com/trikzon/armor-visibility/issues",
-        "sources": "https://github.com/trikzon/armor-visibility"
+        "homepage": "https://github.com/Trikzon/armor-visibility",
+        "issues": "https://github.com/Trikzon/armor-visibility/issues",
+        "sources": "https://github.com/Trikzon/armor-visibility"
       },
-      "license": "MIT",
-      "icon": "assets/armor_visibility/icon.png"
+      "icon": "assets/armor_visibility/icon.png",
+      "license": "LGPL-3.0-or-later"
     },
     "intermediate_mappings": "net.fabricmc:intermediary",
-    "environment": "*",
     "entrypoints": {
-      "client_init": [
-        "com.trikzon.armor_visibility.client.quilt.ArmorVisibilityClientQuilt"
-      ]
+      "client_init": "com.diontryban.mods.armor_visibility.client.ArmorVisibilityClientQuilt"
     },
     "depends": [
       {
         "id": "quilt_loader",
-        "version": "*"
+        "versions": ">=0.17.6-"
       },
       {
-        "id": "quilt_base",
-        "version": "*"
+        "id": "quilted_fabric_api",
+        "versions": ">=5.0.0-"
       },
       {
         "id": "minecraft",
-        "version": ">=1.19"
+        "versions": ">=1.19.3"
+      },
+      {
+        "id": "ash",
+        "versions": ">=0.1.4"
       }
     ]
-  }
+  },
+  "mixin": [
+    "armor_visibility.mixins.json",
+    "armor_visibility.quilt.mixins.json"
+  ]
 }

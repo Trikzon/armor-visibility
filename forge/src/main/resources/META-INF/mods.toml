@@ -1,28 +1,44 @@
-modLoader = "javafml"
-loaderVersion = "[42,)"
-issueTrackerURL = "https://github.com/trikzon/armor-visibility/issues"
-license = "MIT; Assets licensed as All Rights Reserved"
+modLoader="javafml" #mandatory
+loaderVersion="[44,)" #mandatory
+license="LGPL-3.0-or-later"
+issueTrackerURL="https://github.com/trikzon/armor-visibility/issues" #optional
 
-[[mods]]
-modId = "armor_visibility"
-version = "${version}"
-displayName = "Armor Visibility"
-authors = "Trikzon"
-description = '''
+[[mods]] #mandatory
+modId="armor_visibility" #mandatory
+version="${file.jarVersion}" #mandatory
+displayName="Armor Visibility" #mandatory
+#updateJSONURL="" #optional
+displayURL="https://github.com/trikzon/armor-visibility" #optional
+logoFile="assets/armor_visibility/icon.png" #optional
+#credits="" #optional
+authors="Trikzon" #optional
+description='''
 View yours and others' skins through armor.
+
+When toggled (with `v` by default) your armor will stop rendering.
+
+If you shift and press the toggle key (`V` by default) all player armor will stop rendering.
+
+This mod is only client-side and won't affect the rendering of armor on other clients.
 '''
-#logoFile = ""
+
+[[dependencies.armor_visibility]] #optional
+    modId="forge" #mandatory
+    mandatory=true #mandatory
+    versionRange="[44,)" #mandatory
+    # An ordering relationship for the dependency - BEFORE or AFTER required if the relationship is not mandatory
+    ordering="NONE"
+    # Side this dependency is applied on - BOTH, CLIENT or SERVER
+    side="BOTH"
 
 [[dependencies.armor_visibility]]
-modId = "forge"
-mandatory = true
-versionRange = "[42,)"
-ordering = "NONE"
-side = "BOTH"
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.19.3,1.20)"
+    ordering="NONE"
+    side="BOTH"
 
 [[dependencies.armor_visibility]]
-modId = "minecraft"
-mandatory = true
-versionRange = "[1.19.1,)"
-ordering = "NONE"
-side = "BOTH"
+    modId="ash"
+    mandatory=true
+    versionRange="[0.1.0,)"
