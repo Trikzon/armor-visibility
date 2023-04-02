@@ -19,6 +19,7 @@
 
 package com.diontryban.armor_visibility.mixin.client;
 
+import com.diontryban.armor_visibility.ArmorVisibility;
 import com.diontryban.armor_visibility.client.ArmorVisibilityClient;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.model.PlayerModel;
@@ -47,7 +48,7 @@ public abstract class CapeLayerMixin extends RenderLayer<AbstractClientPlayer, P
             float f, float g, float h, float j, float k, float l,
             CallbackInfo ci
     ) {
-        if (ArmorVisibilityClient.config.keepCapeVisible) {
+        if (ArmorVisibility.OPTIONS.get().keepCapeVisible) {
             return;
         }
 

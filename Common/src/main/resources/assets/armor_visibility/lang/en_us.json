@@ -4,5 +4,12 @@
 
     "message.armor_visibility.show_armor": "Armor: Visible",
     "message.armor_visibility.hide_all_armor": "All Armor: Hidden",
-    "message.armor_visibility.hide_my_armor": "My Armor: Hidden"
+    "message.armor_visibility.hide_my_armor": "My Armor: Hidden",
+
+    "armor_visibility.options.keep_elytra_visible": "Keep Elytra Visible",
+    "armor_visibility.options.keep_elytra_visible.tooltip": "Keep Elytra visible when armor is toggled hidden.",
+    "armor_visibility.options.keep_cape_visible": "Keep Cape Visible",
+    "armor_visibility.options.keep_cape_visible.tooltip": "Keep player capes visible when armor is toggled hidden.",
+    "armor_visibility.options.players_only": "Only Affect Players",
+    "armor_visibility.options.players_only.tooltip": "Don't change the visibility of armor on mobs (armor stands, zombies, etc.)."
 }

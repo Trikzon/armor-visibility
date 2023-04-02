@@ -17,16 +17,21 @@
  * along with Armor Visibility. If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.diontryban.armor_visibility;
+package com.diontryban.armor_visibility.options;
 
-import com.diontryban.armor_visibility.options.ArmorVisibilityOptions;
-import com.diontryban.ash.api.options.ModOptionsManager;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.diontryban.ash.api.options.ModOptions;
+import com.google.gson.annotations.SerializedName;
 
-public class ArmorVisibility {
-    public static final String MOD_ID = "armor_visibility";
-    public static final String MOD_NAME = "Armor Visibility";
-    public static final Logger LOG = LoggerFactory.getLogger(MOD_NAME);
-    public static final ModOptionsManager<ArmorVisibilityOptions> OPTIONS = new ModOptionsManager<>(MOD_ID, ArmorVisibilityOptions.class);
+public class ArmorVisibilityOptions extends ModOptions {
+    @SerializedName("keep_elytra_visible")
+    public boolean keepElytraVisible = false;
+    @SerializedName("keep_cape_visible")
+    public boolean keepCapeVisible = true;
+    @SerializedName("players_only")
+    public boolean playersOnly = true;
+
+    @Override
+    protected int getVersion() {
+        return 3;
+    }
 }

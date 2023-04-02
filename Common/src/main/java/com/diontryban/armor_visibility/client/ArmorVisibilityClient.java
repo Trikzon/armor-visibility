@@ -20,7 +20,9 @@
 package com.diontryban.armor_visibility.client;
 
 import com.diontryban.armor_visibility.ArmorVisibility;
+import com.diontryban.armor_visibility.client.gui.screens.ArmorVisibilityOptionsScreen;
 import com.diontryban.ash.api.client.event.ClientTickEvents;
+import com.diontryban.ash.api.client.gui.screens.ModOptionsScreenRegistry;
 import com.diontryban.ash.api.client.input.KeyMappingRegistry;
 import com.diontryban.ash.api.modloader.ModLoader;
 import net.minecraft.client.KeyMapping;
@@ -37,11 +39,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import java.io.File;
 
 public class ArmorVisibilityClient {
-    private static final File MOD_CONFIG_FILE = ModLoader
-            .getConfigDir()
-            .resolve(ArmorVisibility.MOD_ID + ".json")
-            .toFile();
-
     private static final KeyMapping KEY = KeyMappingRegistry.registerKeyMapping(
             new ResourceLocation(ArmorVisibility.MOD_ID, "armor_visibility_toggle"),
             GLFW.GLFW_KEY_V,
@@ -50,13 +47,12 @@ public class ArmorVisibilityClient {
 
     private static boolean keyWasDown = false;
 
-    public static Config config;
     public static boolean hideMyArmor;
     public static boolean hideAllArmor;
 
     public static void init() {
-        config = Config.read(MOD_CONFIG_FILE);
         ClientTickEvents.registerStart(ArmorVisibilityClient::onClientStartTick);
+        ModOptionsScreenRegistry.registerModOptionsScreen(ArmorVisibility.OPTIONS, ArmorVisibilityOptionsScreen::new);
     }
 
     private static void onClientStartTick(Minecraft client) {
@@ -97,7 +93,7 @@ public class ArmorVisibilityClient {
     }
 
     public static void maybeCancelRender(LivingEntity livingEntity, CallbackInfo ci) {
-        if (config.playersOnly && !(livingEntity instanceof Player)) {
+        if (ArmorVisibility.OPTIONS.get().playersOnly && !(livingEntity instanceof Player)) {
             return;
         }
 
