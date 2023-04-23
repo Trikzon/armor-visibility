@@ -2,7 +2,7 @@
     "key.categories.armor_visibility": "கவசத் தெரிவுநிலை",
     "key.armor_visibility.armor_visibility_toggle": "ஆர்மர் தெரிவுநிலையை நிலைமாற்று",
 
-    "message.armor_visibility.show_armor": "கவசம்: தெரியும்",
-    "message.armor_visibility.hide_all_armor": "அனைத்து கவசம்: மறைக்கப்பட்டுள்ளது",
-    "message.armor_visibility.hide_my_armor": "என் கவசம்: மறைக்கப்பட்டுள்ளது"
+    "message.armor_visibility.show_armor": "கவசம்: §aதெரியும்§r",
+    "message.armor_visibility.hide_all_armor": "அனைத்து கவசம்: §cமறைக்கப்பட்டுள்ளது§r",
+    "message.armor_visibility.hide_my_armor": "என் கவசம்: §cமறைக்கப்பட்டுள்ளது§r"
 }

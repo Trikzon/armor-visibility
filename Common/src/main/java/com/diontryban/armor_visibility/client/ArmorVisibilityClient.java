@@ -24,7 +24,6 @@ import com.diontryban.armor_visibility.client.gui.screens.ArmorVisibilityOptions
 import com.diontryban.ash.api.client.event.ClientTickEvents;
 import com.diontryban.ash.api.client.gui.screens.ModOptionsScreenRegistry;
 import com.diontryban.ash.api.client.input.KeyMappingRegistry;
-import com.diontryban.ash.api.modloader.ModLoader;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;

@@ -41,4 +41,4 @@ This mod is only client-side and won't affect the rendering of armor on other cl
 [[dependencies.armor_visibility]]
     modId="ash"
     mandatory=true
-    versionRange="[0.1.0,)"
+    versionRange="[1.0.0-rc.1,2.0.0)"

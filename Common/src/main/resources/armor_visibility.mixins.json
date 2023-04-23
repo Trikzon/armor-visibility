@@ -2,6 +2,7 @@
     "required": true,
     "minVersion": "0.8",
     "package": "com.diontryban.armor_visibility.mixin",
+    "refmap": "armor_visibility.refmap.json",
     "compatibilityLevel": "JAVA_17",
     "mixins": [
     ],

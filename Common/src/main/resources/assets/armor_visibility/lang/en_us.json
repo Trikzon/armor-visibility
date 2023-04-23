@@ -2,9 +2,9 @@
     "key.categories.armor_visibility": "Armor Visibility",
     "key.armor_visibility.armor_visibility_toggle": "Toggle Armor Visibility",
 
-    "message.armor_visibility.show_armor": "Armor: Visible",
-    "message.armor_visibility.hide_all_armor": "All Armor: Hidden",
-    "message.armor_visibility.hide_my_armor": "My Armor: Hidden",
+    "message.armor_visibility.show_armor": "Armor: §aVisible§r",
+    "message.armor_visibility.hide_all_armor": "All Armor: §cHidden§c",
+    "message.armor_visibility.hide_my_armor": "My Armor: §cHidden§c",
 
     "armor_visibility.options.keep_elytra_visible": "Keep Elytra Visible",
     "armor_visibility.options.keep_elytra_visible.tooltip": "Keep Elytra visible when armor is toggled hidden.",
