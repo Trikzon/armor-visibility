@@ -14,7 +14,7 @@ This mod is only client-side and won't affect the rendering of armor on other cl
 [YouTube Demonstration](https://youtu.be/y9PXSRNULdw)
 
 ## Configuration
-The configuration file is located at `.minecraft/config/armor_visibility.json`.
+The configuration file is located at `.minecraft/config/armor_visibility.json`. It can also be edited through in-game UI (using [Mod Menu](https://modrinth.com/mod/modmenu) on Fabric and Quilt).
 
 ### Default Config File
 ```json
