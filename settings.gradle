@@ -27,5 +27,9 @@ pluginManagement {
     }
 }
 
-rootProject.name = 'Armor Visibility'
-include('Common', 'Fabric', 'Forge', 'Quilt')
+plugins {
+    id 'org.gradle.toolchains.foojay-resolver-convention' version '0.5.0'
+}
+
+rootProject.name = 'armor-visibility'
+include('common', 'fabric', 'forge', 'quilt')

@@ -1,44 +1,44 @@
 {
-  "schema_version": 1,
-  "quilt_loader": {
-    "group": "com.diontryban.armor_visibility",
-    "id": "armor_visibility",
-    "version": "${version}",
-    "metadata": {
-      "name": "Armor Visibility",
-      "description": "View yours and others' skins through armor.",
-      "contributors": {
-        "Trikzon": "Owner"
-      },
-      "contact": {
-        "homepage": "https://github.com/Trikzon/armor-visibility",
-        "issues": "https://github.com/Trikzon/armor-visibility/issues",
-        "sources": "https://github.com/Trikzon/armor-visibility"
-      },
-      "icon": "assets/armor_visibility/icon.png",
-      "license": "LGPL-3.0-or-later"
+    "schema_version": 1,
+    "quilt_loader": {
+        "group": "com.diontryban.armor_visibility",
+        "id": "armor_visibility",
+        "version": "${version}",
+        "metadata": {
+            "name": "Armor Visibility",
+            "description": "View yours and others' skins through armor.",
+            "contributors": {
+                "Trikzon": "Owner"
+            },
+            "contact": {
+                "homepage": "https://github.com/Trikzon/armor-visibility",
+                "issues": "https://github.com/Trikzon/armor-visibility/issues",
+                "sources": "https://github.com/Trikzon/armor-visibility"
+            },
+            "icon": "assets/armor_visibility/icon.png",
+            "license": "LGPL-3.0-or-later"
+        },
+        "intermediate_mappings": "net.fabricmc:intermediary",
+        "entrypoints": {
+            "client_init": "com.diontryban.armor_visibility.client.ArmorVisibilityClientQuilt"
+        },
+        "depends": [
+            {
+                "id": "quilted_fabric_api",
+                "versions": ">=7.0.0-"
+            },
+            {
+                "id": "minecraft",
+                "versions": "^1.20"
+            },
+            {
+                "id": "ash_api",
+                "versions": "^2.1.0"
+            }
+        ]
     },
-    "intermediate_mappings": "net.fabricmc:intermediary",
-    "entrypoints": {
-      "client_init": "com.diontryban.armor_visibility.client.ArmorVisibilityClientQuilt"
-    },
-    "depends": [
-      {
-        "id": "quilted_fabric_api",
-        "versions": ">=7.0.0-"
-      },
-      {
-        "id": "minecraft",
-        "versions": "^1.20"
-      },
-      {
-        "id": "ash",
-        "versions": "^2.0.0-"
-      }
+    "mixin": [
+        "armor_visibility.mixins.json",
+        "armor_visibility.quilt.mixins.json"
     ]
-  },
-  "mixin": [
-    "armor_visibility.mixins.json",
-    "armor_visibility.quilt.mixins.json"
-  ]
 }
