@@ -30,6 +30,15 @@ public class ArmorVisibilityOptions extends ModOptions {
     @SerializedName("players_only")
     public boolean playersOnly = true;
 
+    @SerializedName("toggles_helmet")
+    public boolean togglesHelmet = true;
+    @SerializedName("toggles_chestplate")
+    public boolean togglesChestplate = true;
+    @SerializedName("toggles_leggings")
+    public boolean togglesLeggings = true;
+    @SerializedName("toggles_boots")
+    public boolean togglesBoots = true;
+
     @Override
     protected int getVersion() {
         return 3;

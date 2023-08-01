@@ -1,4 +1,7 @@
 # Changelog
+## v9.0.1+1.20.1
+- Add mod options for stopping specific armor slots from toggling
+
 ## v9.0.0+1.20.1
 - Update to MC 1.20.1
 

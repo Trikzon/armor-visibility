@@ -11,5 +11,14 @@
     "armor_visibility.options.keep_cape_visible": "Keep Cape Visible",
     "armor_visibility.options.keep_cape_visible.tooltip": "Keep player capes visible when armor is toggled hidden.",
     "armor_visibility.options.players_only": "Only Affect Players",
-    "armor_visibility.options.players_only.tooltip": "Don't change the visibility of armor on mobs (armor stands, zombies, etc.)."
+    "armor_visibility.options.players_only.tooltip": "Don't change the visibility of armor on mobs (armor stands, zombies, etc.).",
+
+    "armor_visibility.options.toggles_helmet": "Toggles Helmet",
+    "armor_visibility.options.toggles_helmet.tooltip": "If on, toggling armor visibility toggles the visibility of helmets.",
+    "armor_visibility.options.toggles_chestplate": "Toggles Chestplate",
+    "armor_visibility.options.toggles_chestplate.tooltip": "If on, toggling armor visibility toggles the visibility of chestplates.",
+    "armor_visibility.options.toggles_leggings": "Toggles Leggings",
+    "armor_visibility.options.toggles_leggings.tooltip": "If on, toggling armor visibility toggles the visibility of leggings.",
+    "armor_visibility.options.toggles_boots": "Toggles Boots",
+    "armor_visibility.options.toggles_boots.tooltip": "If on, toggling armor visibility toggles the visibility of boots."
 }

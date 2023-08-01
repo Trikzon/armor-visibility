@@ -35,23 +35,55 @@ public class ArmorVisibilityOptionsScreen extends ModOptionsScreen<ArmorVisibili
 
     @Override
     protected void addOptions() {
-        this.list.addBig(OptionInstance.createBoolean(
-                "armor_visibility.options.keep_elytra_visible",
-                value -> Tooltip.create(Component.translatable("armor_visibility.options.keep_elytra_visible.tooltip")),
-                options.get().keepElytraVisible,
-                value -> options.get().keepElytraVisible = value
-        ));
-        this.list.addBig(OptionInstance.createBoolean(
-                "armor_visibility.options.keep_cape_visible",
-                value -> Tooltip.create(Component.translatable("armor_visibility.options.keep_cape_visible.tooltip")),
-                options.get().keepCapeVisible,
-                value -> options.get().keepCapeVisible = value
-        ));
+        this.list.addSmall(
+                OptionInstance.createBoolean(
+                        "armor_visibility.options.keep_elytra_visible",
+                        value -> Tooltip.create(Component.translatable("armor_visibility.options.keep_elytra_visible.tooltip")),
+                        options.get().keepElytraVisible,
+                        value -> options.get().keepElytraVisible = value
+                ),
+                OptionInstance.createBoolean(
+                        "armor_visibility.options.keep_cape_visible",
+                        value -> Tooltip.create(Component.translatable("armor_visibility.options.keep_cape_visible.tooltip")),
+                        options.get().keepCapeVisible,
+                        value -> options.get().keepCapeVisible = value
+                )
+        );
+
         this.list.addBig(OptionInstance.createBoolean(
                 "armor_visibility.options.players_only",
                 value -> Tooltip.create(Component.translatable("armor_visibility.options.players_only.tooltip")),
                 options.get().playersOnly,
                 value -> options.get().playersOnly = value
         ));
+
+        this.list.addSmall(
+                OptionInstance.createBoolean(
+                        "armor_visibility.options.toggles_helmet",
+                        value -> Tooltip.create(Component.translatable("armor_visibility.options.toggles_helmet.tooltip")),
+                        options.get().togglesHelmet,
+                        value -> options.get().togglesHelmet = value
+                ),
+                OptionInstance.createBoolean(
+                        "armor_visibility.options.toggles_chestplate",
+                        value -> Tooltip.create(Component.translatable("armor_visibility.options.toggles_chestplate.tooltip")),
+                        options.get().togglesChestplate,
+                        value -> options.get().togglesChestplate = value
+                )
+        );
+        this.list.addSmall(
+                OptionInstance.createBoolean(
+                        "armor_visibility.options.toggles_leggings",
+                        value -> Tooltip.create(Component.translatable("armor_visibility.options.toggles_leggings.tooltip")),
+                        options.get().togglesLeggings,
+                        value -> options.get().togglesLeggings = value
+                ),
+                OptionInstance.createBoolean(
+                        "armor_visibility.options.toggles_boots",
+                        value -> Tooltip.create(Component.translatable("armor_visibility.options.toggles_boots.tooltip")),
+                        options.get().togglesBoots,
+                        value -> options.get().togglesBoots = value
+                )
+        );
     }
 }

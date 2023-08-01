@@ -19,13 +19,16 @@
 
 package com.diontryban.armor_visibility.mixin.client;
 
+import com.diontryban.armor_visibility.ArmorVisibility;
 import com.diontryban.armor_visibility.client.ArmorVisibilityClient;
+import com.diontryban.armor_visibility.options.ArmorVisibilityOptions;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.RenderLayerParent;
 import net.minecraft.client.renderer.entity.layers.HumanoidArmorLayer;
 import net.minecraft.client.renderer.entity.layers.RenderLayer;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -38,15 +41,23 @@ public abstract class HumanoidArmorLayerMixin<T extends LivingEntity, M extends 
         super(renderLayerParent);
     }
 
-    @Inject(at = @At("HEAD"), cancellable = true, method = "render(Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;ILnet/minecraft/world/entity/LivingEntity;FFFFFF)V")
-    private void injectBeforeRender(
+    @Inject(at = @At("HEAD"), cancellable = true, method = "renderArmorPiece")
+    private void injectBeforeRenderArmorPiece(
             PoseStack poseStack,
             MultiBufferSource bufferSource,
-            int i,
             T livingEntity,
-            float f, float g, float h, float j, float k, float l,
+            EquipmentSlot slot,
+            int i,
+            A armorModel,
             CallbackInfo ci
     ) {
-        ArmorVisibilityClient.maybeCancelRender(livingEntity, ci);
+        ArmorVisibilityOptions options = ArmorVisibility.OPTIONS.get();
+        if ((slot == EquipmentSlot.HEAD && options.togglesHelmet)
+         || (slot == EquipmentSlot.CHEST && options.togglesChestplate)
+         || (slot == EquipmentSlot.LEGS && options.togglesLeggings)
+         || (slot == EquipmentSlot.FEET && options.togglesBoots)
+        ) {
+            ArmorVisibilityClient.maybeCancelRender(livingEntity, ci);
+        }
     }
 }
