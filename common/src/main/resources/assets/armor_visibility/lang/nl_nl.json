@@ -1,0 +1,24 @@
+{
+    "key.categories.armor_visibility": "Harnas Zichtbaarheid",
+    "key.armor_visibility.armor_visibility_toggle": "Schakel Harnas Zichtbaarheid",
+
+    "message.armor_visibility.show_armor": "Harnas: §aZichtbaar§r",
+    "message.armor_visibility.hide_all_armor": "Alle Harnassen: §cVerborgen§c",
+    "message.armor_visibility.hide_my_armor": "Mijn Harnas: §cVerborgen§c",
+
+    "armor_visibility.options.keep_elytra_visible": "Houd Dekschild Zichtbaar",
+    "armor_visibility.options.keep_elytra_visible.tooltip": "Houd Dekschild zichtbaar wanneer harnas verborgen is.",
+    "armor_visibility.options.keep_cape_visible": "Houd Cape Zichtbaar",
+    "armor_visibility.options.keep_cape_visible.tooltip": "Houd de capes van spelers zichtbaar wanneer harnas verborgen is.",
+    "armor_visibility.options.players_only": "Alleen van invloed op spelers",
+    "armor_visibility.options.players_only.tooltip": "Verander de zichtbaarheid van harnas op mobs (haranshouders, zombies, etc.) niet.",
+
+    "armor_visibility.options.toggles_helmet": "Schakelt Helm",
+    "armor_visibility.options.toggles_helmet.tooltip": "Indien ingeschakeld, schakelt het wijzigen van de zichtbaarheid van harnas de zichtbaarheid van helmen in.",
+    "armor_visibility.options.toggles_chestplate": "Schakelt Borstplaat",
+    "armor_visibility.options.toggles_chestplate.tooltip": "Indien ingeschakeld, schakelt het wijzigen van de zichtbaarheid van harnas de zichtbaarheid van borstplaten in.",
+    "armor_visibility.options.toggles_leggings": "Schakelt Beenbeschermers",
+    "armor_visibility.options.toggles_leggings.tooltip": "Indien ingeschakeld, schakelt het wijzigen van de zichtbaarheid van harnas de zichtbaarheid van beenbeschermers in.",
+    "armor_visibility.options.toggles_boots": "Schakelt Laarzen",
+    "armor_visibility.options.toggles_boots.tooltip": "Indien ingeschakeld, schakelt het wijzigen van de zichtbaarheid van harnas de zichtbaarheid van laarzen in."
+}
