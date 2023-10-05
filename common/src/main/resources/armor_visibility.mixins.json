@@ -10,7 +10,8 @@
         "client.CapeLayerMixin",
         "client.CustomHeadLayerMixin",
         "client.ElytraLayerMixin",
-        "client.HumanoidArmorLayerMixin"
+        "client.HumanoidArmorLayerMixin",
+        "client.PlayerModelMixin"
     ],
     "injectors": {
       "defaultRequire": 1

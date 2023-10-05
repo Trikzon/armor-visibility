@@ -35,8 +35,6 @@ import net.minecraft.world.entity.player.Player;
 import org.lwjgl.glfw.GLFW;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import java.io.File;
-
 public class ArmorVisibilityClient {
     private static final KeyMapping KEY = KeyMappingRegistry.registerKeyMapping(
             new ResourceLocation(ArmorVisibility.MOD_ID, "armor_visibility_toggle"),
@@ -92,15 +90,19 @@ public class ArmorVisibilityClient {
     }
 
     public static void maybeCancelRender(LivingEntity livingEntity, CallbackInfo ci) {
+        maybeCancelRender(livingEntity, ci::cancel);
+    }
+
+    public static void maybeCancelRender(LivingEntity livingEntity, Runnable onCancel) {
         if (ArmorVisibility.OPTIONS.get().playersOnly && !(livingEntity instanceof Player)) {
             return;
         }
 
         if (hideAllArmor) {
-            ci.cancel();
+            onCancel.run();
         } else if (hideMyArmor) {
             if (livingEntity.equals(Minecraft.getInstance().player)) {
-                ci.cancel();
+                onCancel.run();
             }
         }
     }
