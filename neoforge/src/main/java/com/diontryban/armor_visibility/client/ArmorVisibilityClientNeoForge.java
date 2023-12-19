@@ -19,10 +19,11 @@
 
 package com.diontryban.armor_visibility.client;
 
-import com.diontryban.ash_api.modloader.FabricClientModInitializer;
+import com.diontryban.armor_visibility.ArmorVisibility;
+import com.diontryban.ash_api.modloader.NeoForgeClientModInitializer;
 
-public class ArmorVisibilityClientFabric extends FabricClientModInitializer {
-    public ArmorVisibilityClientFabric() {
-        super(ArmorVisibilityClient::new);
+public class ArmorVisibilityClientNeoForge extends NeoForgeClientModInitializer {
+    public ArmorVisibilityClientNeoForge() {
+        super(ArmorVisibility.MOD_ID, ArmorVisibilityClient::new);
     }
 }

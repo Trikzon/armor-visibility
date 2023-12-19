@@ -20,11 +20,11 @@
 package com.diontryban.armor_visibility;
 
 import com.diontryban.armor_visibility.options.ArmorVisibilityOptions;
-import com.diontryban.ash.api.options.ModOptionsManager;
+import com.diontryban.ash_api.options.ModOptionsManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class ArmorVisibility {
+public final class ArmorVisibility {
     public static final String MOD_ID = "armor_visibility";
     public static final String MOD_NAME = "Armor Visibility";
     public static final Logger LOG = LoggerFactory.getLogger(MOD_NAME);

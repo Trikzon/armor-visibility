@@ -19,7 +19,7 @@
 
 package com.diontryban.armor_visibility.options;
 
-import com.diontryban.ash.api.options.ModOptions;
+import com.diontryban.ash_api.options.ModOptions;
 import com.google.gson.annotations.SerializedName;
 
 public class ArmorVisibilityOptions extends ModOptions {

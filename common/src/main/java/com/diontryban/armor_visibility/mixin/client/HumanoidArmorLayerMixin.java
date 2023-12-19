@@ -53,9 +53,9 @@ public abstract class HumanoidArmorLayerMixin<T extends LivingEntity, M extends 
     ) {
         ArmorVisibilityOptions options = ArmorVisibility.OPTIONS.get();
         if ((slot == EquipmentSlot.HEAD && options.togglesHelmet)
-         || (slot == EquipmentSlot.CHEST && options.togglesChestplate)
-         || (slot == EquipmentSlot.LEGS && options.togglesLeggings)
-         || (slot == EquipmentSlot.FEET && options.togglesBoots)
+                || (slot == EquipmentSlot.CHEST && options.togglesChestplate)
+                || (slot == EquipmentSlot.LEGS && options.togglesLeggings)
+                || (slot == EquipmentSlot.FEET && options.togglesBoots)
         ) {
             ArmorVisibilityClient.maybeCancelRender(livingEntity, ci);
         }

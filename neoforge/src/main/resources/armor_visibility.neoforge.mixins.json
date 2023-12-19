@@ -1,15 +1,15 @@
 {
     "required": true,
     "minVersion": "0.8",
-    "package": "com.diontryban.armor_visibility.mixin",
-    "refmap": "${mod_id}.refmap.json",
+    "package": "com.diontryban.ash_api.mixin",
     "compatibilityLevel": "JAVA_17",
     "mixins": [
     ],
     "client": [
     ],
+    "server": [
+    ],
     "injectors": {
-      "defaultRequire": 1
+        "defaultRequire": 1
     }
-  }
-  
+}

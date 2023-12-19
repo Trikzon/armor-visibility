@@ -21,15 +21,17 @@ package com.diontryban.armor_visibility.client.gui.screens;
 
 import com.diontryban.armor_visibility.ArmorVisibility;
 import com.diontryban.armor_visibility.options.ArmorVisibilityOptions;
-import com.diontryban.ash.api.client.gui.screens.ModOptionsScreen;
-import com.diontryban.ash.api.options.ModOptionsManager;
+import com.diontryban.ash_api.client.gui.screens.ModOptionsScreen;
+import com.diontryban.ash_api.options.ModOptionsManager;
 import net.minecraft.client.OptionInstance;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Tooltip;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
+import org.jetbrains.annotations.NotNull;
 
 public class ArmorVisibilityOptionsScreen extends ModOptionsScreen<ArmorVisibilityOptions> {
-    public ArmorVisibilityOptionsScreen(ModOptionsManager<ArmorVisibilityOptions> options, Screen parent) {
+    public ArmorVisibilityOptionsScreen(@NotNull ModOptionsManager<ArmorVisibilityOptions> options, Screen parent) {
         super(Component.literal(ArmorVisibility.MOD_NAME), options, parent);
     }
 

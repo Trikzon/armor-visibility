@@ -21,12 +21,12 @@ package com.diontryban.armor_visibility.client;
 
 import com.diontryban.armor_visibility.ArmorVisibility;
 import com.diontryban.armor_visibility.client.gui.screens.ArmorVisibilityOptionsScreen;
-import com.diontryban.ash.api.client.event.ClientTickEvents;
-import com.diontryban.ash.api.client.gui.screens.ModOptionsScreenRegistry;
-import com.diontryban.ash.api.client.input.KeyMappingRegistry;
+import com.diontryban.ash_api.client.event.ClientTickEvents;
+import com.diontryban.ash_api.client.gui.screens.ModOptionsScreenRegistry;
+import com.diontryban.ash_api.client.input.KeyMappingRegistry;
+import com.diontryban.ash_api.modloader.CommonClientModInitializer;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
@@ -35,7 +35,7 @@ import net.minecraft.world.entity.player.Player;
 import org.lwjgl.glfw.GLFW;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-public class ArmorVisibilityClient {
+public class ArmorVisibilityClient extends CommonClientModInitializer {
     private static final KeyMapping KEY = KeyMappingRegistry.registerKeyMapping(
             new ResourceLocation(ArmorVisibility.MOD_ID, "armor_visibility_toggle"),
             GLFW.GLFW_KEY_V,
@@ -47,13 +47,14 @@ public class ArmorVisibilityClient {
     public static boolean hideMyArmor;
     public static boolean hideAllArmor;
 
-    public static void init() {
+    @Override
+    public void onInitializeClient() {
         ClientTickEvents.registerStart(ArmorVisibilityClient::onClientStartTick);
         ModOptionsScreenRegistry.registerModOptionsScreen(ArmorVisibility.OPTIONS, ArmorVisibilityOptionsScreen::new);
     }
 
     private static void onClientStartTick(Minecraft client) {
-        final LocalPlayer player = client.player;
+        final var player = client.player;
         if (player == null) { return; }
 
         if (KEY.isDown() && !keyWasDown) {

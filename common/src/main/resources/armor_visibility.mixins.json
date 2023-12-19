@@ -13,8 +13,10 @@
         "client.HumanoidArmorLayerMixin",
         "client.PlayerModelMixin"
     ],
+    "server": [
+    ],
     "injectors": {
-      "defaultRequire": 1
+        "defaultRequire": 1
     }
-  }
-  
+}
+

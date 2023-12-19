@@ -19,18 +19,13 @@
 
 package com.diontryban.armor_visibility;
 
-import com.diontryban.ash.api.modloader.forge.ForgeModLoader;
 import com.diontryban.armor_visibility.client.ArmorVisibilityClientForge;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.fml.DistExecutor;
-import net.minecraftforge.fml.ModLoadingContext;
+import com.diontryban.ash_api.modloader.ForgeModInitializer;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
 @Mod(ArmorVisibility.MOD_ID)
-public class ArmorVisibilityForge {
+public class ArmorVisibilityForge extends ForgeModInitializer {
     public ArmorVisibilityForge() {
-        ForgeModLoader.registerMod(ArmorVisibility.MOD_ID, ModLoadingContext.get(), FMLJavaModLoadingContext.get());
-        DistExecutor.safeCallWhenOn(Dist.CLIENT, () -> ArmorVisibilityClientForge::new);
+        super(ArmorVisibility.MOD_ID, null, ArmorVisibilityClientForge::new);
     }
 }

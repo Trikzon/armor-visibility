@@ -17,14 +17,15 @@
  * along with Armor Visibility. If not, see <https://www.gnu.org/licenses/>.
  */
 
-package com.diontryban.armor_visibility.client;
+package com.diontryban.armor_visibility;
 
-import org.quiltmc.loader.api.ModContainer;
-import org.quiltmc.qsl.base.api.entrypoint.client.ClientModInitializer;
+import com.diontryban.armor_visibility.client.ArmorVisibilityClientNeoForge;
+import com.diontryban.ash_api.modloader.NeoForgeModInitializer;
+import net.neoforged.fml.common.Mod;
 
-public class ArmorVisibilityClientQuilt implements ClientModInitializer {
-    @Override
-    public void onInitializeClient(ModContainer mod) {
-        ArmorVisibilityClient.init();
+@Mod(ArmorVisibility.MOD_ID)
+public class ArmorVisibilityNeoForge extends NeoForgeModInitializer {
+    public ArmorVisibilityNeoForge() {
+        super(ArmorVisibility.MOD_ID, null, ArmorVisibilityClientNeoForge::new);
     }
 }
