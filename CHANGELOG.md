@@ -1,4 +1,7 @@
 # Changelog
+## v20.2.1
+- Fix crash when opening the mod menu entry on NeoForge
+
 ## v20.2.0
 - Update to MC 1.20.2.
 - Changed version format to follow NeoForge's `<minecraft_minor>.<minecraft_patch>.<number>(-beta)`.
