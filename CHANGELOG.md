@@ -1,4 +1,8 @@
 # Changelog
+## v20.2.2
+- Added an option to save the visibility toggle's state between launches.
+  - As requested by @eaglepeak :D
+
 ## v20.2.1
 - Fix crash when opening the mod menu entry on NeoForge
 

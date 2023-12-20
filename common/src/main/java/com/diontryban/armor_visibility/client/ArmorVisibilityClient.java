@@ -44,25 +44,31 @@ public class ArmorVisibilityClient extends CommonClientModInitializer {
 
     private static boolean keyWasDown = false;
 
-    public static boolean hideMyArmor;
-    public static boolean hideAllArmor;
-
     @Override
     public void onInitializeClient() {
         ClientTickEvents.registerStart(ArmorVisibilityClient::onClientStartTick);
         ModOptionsScreenRegistry.registerModOptionsScreen(ArmorVisibility.OPTIONS, ArmorVisibilityOptionsScreen::new);
+
+        var options = ArmorVisibility.OPTIONS.get();
+        if (!options.saveBetweenLaunches) {
+            options.saveData.hideMyArmor = false;
+            options.saveData.hideAllArmor = false;
+        }
     }
 
     private static void onClientStartTick(Minecraft client) {
         final var player = client.player;
         if (player == null) { return; }
 
+        var options = ArmorVisibility.OPTIONS.get();
+
         if (KEY.isDown() && !keyWasDown) {
-            if (hideAllArmor || hideMyArmor) {
+            if (options.saveData.hideAllArmor || options.saveData.hideMyArmor) {
                 player.playSound(SoundEvents.TRIPWIRE_CLICK_OFF, 0.5f, 1.0f);
 
-                hideMyArmor = false;
-                hideAllArmor = false;
+                options.saveData.hideMyArmor = false;
+                options.saveData.hideAllArmor = false;
+                ArmorVisibility.OPTIONS.write();
 
                 player.displayClientMessage(Component.translatable(
                         "message." + ArmorVisibility.MOD_ID + ".show_armor"
@@ -71,13 +77,15 @@ public class ArmorVisibilityClient extends CommonClientModInitializer {
                 player.playSound(SoundEvents.TRIPWIRE_CLICK_ON, 0.5f, 1.0f);
 
                 if (player.isShiftKeyDown()) {
-                    hideAllArmor = true;
+                    options.saveData.hideAllArmor = true;
+                    ArmorVisibility.OPTIONS.write();
 
                     player.displayClientMessage(Component.translatable(
                             "message." + ArmorVisibility.MOD_ID + ".hide_all_armor"
                     ), true);
                 } else {
-                    hideMyArmor = true;
+                    options.saveData.hideMyArmor = true;
+                    ArmorVisibility.OPTIONS.write();
 
                     player.displayClientMessage(Component.translatable(
                             "message." + ArmorVisibility.MOD_ID + ".hide_my_armor"
@@ -95,13 +103,15 @@ public class ArmorVisibilityClient extends CommonClientModInitializer {
     }
 
     public static void maybeCancelRender(LivingEntity livingEntity, Runnable onCancel) {
-        if (ArmorVisibility.OPTIONS.get().playersOnly && !(livingEntity instanceof Player)) {
+        var options = ArmorVisibility.OPTIONS.get();
+
+        if (options.playersOnly && !(livingEntity instanceof Player)) {
             return;
         }
 
-        if (hideAllArmor) {
+        if (options.saveData.hideAllArmor) {
             onCancel.run();
-        } else if (hideMyArmor) {
+        } else if (options.saveData.hideMyArmor) {
             if (livingEntity.equals(Minecraft.getInstance().player)) {
                 onCancel.run();
             }

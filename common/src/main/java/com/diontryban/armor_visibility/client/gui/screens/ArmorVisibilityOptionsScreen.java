@@ -87,5 +87,12 @@ public class ArmorVisibilityOptionsScreen extends ModOptionsScreen<ArmorVisibili
                         value -> options.get().togglesBoots = value
                 )
         );
+
+        this.list.addBig(OptionInstance.createBoolean(
+                "armor_visibility.options.save_between_launches",
+                value -> Tooltip.create(Component.translatable("armor_visibility.options.save_between_launches.tooltip")),
+                options.get().saveBetweenLaunches,
+                value -> options.get().saveBetweenLaunches = value
+        ));
     }
 }

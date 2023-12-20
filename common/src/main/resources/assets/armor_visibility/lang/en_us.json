@@ -20,5 +20,8 @@
   "armor_visibility.options.toggles_leggings": "Toggles Leggings",
   "armor_visibility.options.toggles_leggings.tooltip": "If on, toggling armor visibility toggles the visibility of leggings.",
   "armor_visibility.options.toggles_boots": "Toggles Boots",
-  "armor_visibility.options.toggles_boots.tooltip": "If on, toggling armor visibility toggles the visibility of boots."
+  "armor_visibility.options.toggles_boots.tooltip": "If on, toggling armor visibility toggles the visibility of boots.",
+
+  "armor_visibility.options.save_between_launches": "Save Between Launches",
+  "armor_visibility.options.save_between_launches.tooltip": "If on, the armor visibility toggle's state will save between launches. So if you quit the game with armor hidden, when you open the game later it will still be hidden."
 }

@@ -39,8 +39,20 @@ public class ArmorVisibilityOptions extends ModOptions {
     @SerializedName("toggles_boots")
     public boolean togglesBoots = true;
 
+    @SerializedName("save_between_launches")
+    public boolean saveBetweenLaunches = false;
+    @SerializedName("save_data")
+    public SaveData saveData = new SaveData();
+
     @Override
     protected int getVersion() {
         return 3;
+    }
+
+    public static class SaveData {
+        @SerializedName("hide_my_armor")
+        public boolean hideMyArmor = false;
+        @SerializedName("hide_all_armor")
+        public boolean hideAllArmor = false;
     }
 }
