@@ -1,4 +1,7 @@
 # Changelog
+## v20.2.3
+- Added Ash API to required dependency list on Forge and NeoForge.
+
 ## v20.2.2
 - Added an option to save the visibility toggle's state between launches.
   - As requested by @eaglepeak :D
