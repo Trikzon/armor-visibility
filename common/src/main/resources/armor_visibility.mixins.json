@@ -1,22 +1,20 @@
 {
-    "required": true,
-    "minVersion": "0.8",
-    "package": "com.diontryban.armor_visibility.mixin",
-    "refmap": "${mod_id}.refmap.json",
-    "compatibilityLevel": "JAVA_17",
-    "mixins": [
-    ],
-    "client": [
-        "client.CapeLayerMixin",
-        "client.CustomHeadLayerMixin",
-        "client.ElytraLayerMixin",
-        "client.HumanoidArmorLayerMixin",
-        "client.PlayerModelMixin"
-    ],
-    "server": [
-    ],
-    "injectors": {
-        "defaultRequire": 1
-    }
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.diontryban.armor_visibility.mixin",
+  "refmap": "${mod_id}.refmap.json",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [ ],
+  "client": [
+    "client.CapeLayerMixin",
+    "client.CustomHeadLayerMixin",
+    "client.ElytraLayerMixin",
+    "client.HumanoidArmorLayerMixin",
+    "client.PlayerModelMixin"
+  ],
+  "server": [ ],
+  "injectors": {
+    "defaultRequire": 1
+  }
 }
 

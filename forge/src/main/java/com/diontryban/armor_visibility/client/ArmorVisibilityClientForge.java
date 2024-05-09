@@ -21,7 +21,6 @@ package com.diontryban.armor_visibility.client;
 
 import com.diontryban.armor_visibility.ArmorVisibility;
 import com.diontryban.ash_api.modloader.ForgeClientModInitializer;
-import com.diontryban.ash_api.modloader.ForgeModLoader;
 
 public class ArmorVisibilityClientForge extends ForgeClientModInitializer {
     public ArmorVisibilityClientForge() {

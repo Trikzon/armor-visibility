@@ -24,7 +24,6 @@ import com.diontryban.armor_visibility.options.ArmorVisibilityOptions;
 import com.diontryban.ash_api.client.gui.screens.ModOptionsScreen;
 import com.diontryban.ash_api.options.ModOptionsManager;
 import net.minecraft.client.OptionInstance;
-import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Tooltip;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;

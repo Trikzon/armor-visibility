@@ -21,11 +21,13 @@ package com.diontryban.armor_visibility;
 
 import com.diontryban.armor_visibility.client.ArmorVisibilityClientNeoForge;
 import com.diontryban.ash_api.modloader.NeoForgeModInitializer;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
 
 @Mod(ArmorVisibility.MOD_ID)
 public class ArmorVisibilityNeoForge extends NeoForgeModInitializer {
-    public ArmorVisibilityNeoForge() {
+    public ArmorVisibilityNeoForge(IEventBus modEventBus, ModContainer modContainer) {
         super(ArmorVisibility.MOD_ID, null, ArmorVisibilityClientNeoForge::new);
     }
 }
