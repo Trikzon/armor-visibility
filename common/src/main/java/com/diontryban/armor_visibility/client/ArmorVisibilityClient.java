@@ -96,23 +96,27 @@ public class ArmorVisibilityClient {
         }
     }
 
-    public static void maybeCancelRender(LivingEntity livingEntity, CallbackInfo ci) {
-        maybeCancelRender(livingEntity, ci::cancel);
+    public static boolean maybeCancelRender(LivingEntity livingEntity, CallbackInfo ci) {
+        return maybeCancelRender(livingEntity, ci::cancel);
     }
 
-    public static void maybeCancelRender(LivingEntity livingEntity, Runnable onCancel) {
+    public static boolean maybeCancelRender(LivingEntity livingEntity, Runnable onCancel) {
         var options = ArmorVisibility.OPTIONS.get();
 
         if (options.playersOnly && !(livingEntity instanceof Player)) {
-            return;
+            return false;
         }
 
         if (options.saveData.hideAllArmor) {
             onCancel.run();
+            return true;
         } else if (options.saveData.hideMyArmor) {
             if (livingEntity.equals(Minecraft.getInstance().player)) {
                 onCancel.run();
+                return true;
             }
         }
+
+        return false;
     }
 }

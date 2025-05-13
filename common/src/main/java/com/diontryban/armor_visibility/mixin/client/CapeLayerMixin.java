@@ -28,9 +28,13 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.RenderLayerParent;
 import net.minecraft.client.renderer.entity.layers.CapeLayer;
 import net.minecraft.client.renderer.entity.layers.RenderLayer;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(CapeLayer.class)
@@ -53,5 +57,19 @@ public abstract class CapeLayerMixin extends RenderLayer<AbstractClientPlayer, P
         }
 
         ArmorVisibilityClient.maybeCancelRender(player, ci);
+    }
+
+    // Render the player's cape if the player is wearing an elytra,
+    // keepCapeVisible is true, and the elytra has been made invisible.
+    @Redirect(
+            method = "render(Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;ILnet/minecraft/client/player/AbstractClientPlayer;FFFFFF)V",
+            at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/ItemStack;is(Lnet/minecraft/world/item/Item;)Z")
+    )
+    private boolean redirectItemStackIsElytra(ItemStack stack, Item item, PoseStack poseStack, MultiBufferSource multiBufferSource, int packedLight, AbstractClientPlayer livingEntity) {
+        if (!stack.is(Items.ELYTRA)) {
+            return false;
+        }
+
+        return !ArmorVisibilityClient.maybeCancelRender(livingEntity, () -> {});
     }
 }
