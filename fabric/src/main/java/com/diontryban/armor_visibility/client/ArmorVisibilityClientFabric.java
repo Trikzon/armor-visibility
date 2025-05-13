@@ -19,10 +19,11 @@
 
 package com.diontryban.armor_visibility.client;
 
-import com.diontryban.ash_api.modloader.FabricClientModInitializer;
+import net.fabricmc.api.ClientModInitializer;
 
-public class ArmorVisibilityClientFabric extends FabricClientModInitializer {
-    public ArmorVisibilityClientFabric() {
-        super(ArmorVisibilityClient::new);
+public class ArmorVisibilityClientFabric implements ClientModInitializer {
+    @Override
+    public void onInitializeClient() {
+        ArmorVisibilityClient.init();
     }
 }

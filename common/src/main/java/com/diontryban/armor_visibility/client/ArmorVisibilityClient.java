@@ -21,10 +21,9 @@ package com.diontryban.armor_visibility.client;
 
 import com.diontryban.armor_visibility.ArmorVisibility;
 import com.diontryban.armor_visibility.client.gui.screens.ArmorVisibilityOptionsScreen;
-import com.diontryban.ash_api.client.event.ClientTickEvents;
+import com.diontryban.ash_api.client.event.ClientTickEvent;
 import com.diontryban.ash_api.client.gui.screens.ModOptionsScreenRegistry;
 import com.diontryban.ash_api.client.input.KeyMappingRegistry;
-import com.diontryban.ash_api.modloader.CommonClientModInitializer;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
@@ -35,19 +34,18 @@ import net.minecraft.world.entity.player.Player;
 import org.lwjgl.glfw.GLFW;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-public class ArmorVisibilityClient extends CommonClientModInitializer {
-    private static final KeyMapping KEY = KeyMappingRegistry.registerKeyMapping(
-            new ResourceLocation(ArmorVisibility.MOD_ID, "armor_visibility_toggle"),
+public class ArmorVisibilityClient {
+    private static final KeyMapping KEY = KeyMappingRegistry.register(
+            ResourceLocation.fromNamespaceAndPath(ArmorVisibility.MOD_ID, "armor_visibility_toggle"),
             GLFW.GLFW_KEY_V,
             ArmorVisibility.MOD_ID
     );
 
     private static boolean keyWasDown = false;
 
-    @Override
-    public void onInitializeClient() {
-        ClientTickEvents.registerStart(ArmorVisibilityClient::onClientStartTick);
-        ModOptionsScreenRegistry.registerModOptionsScreen(ArmorVisibility.OPTIONS, ArmorVisibilityOptionsScreen::new);
+    public static void init() {
+        ClientTickEvent.Pre.register(ArmorVisibilityClient::onClientStartTick);
+        ModOptionsScreenRegistry.register(ArmorVisibility.OPTIONS, ArmorVisibilityOptionsScreen::new);
 
         var options = ArmorVisibility.OPTIONS.get();
         if (!options.saveBetweenLaunches) {

@@ -37,7 +37,7 @@ side = "BOTH"
 [[dependencies.${mod_id}]]
 modId = "ash_api"
 mandatory = true
-versionRange = "[20.6.0-beta, 20.7.0)"
+versionRange = "[${ash_version},)"
 ordering = "NONE"
 side = "BOTH"
 

@@ -20,10 +20,12 @@
 package com.diontryban.armor_visibility.client;
 
 import com.diontryban.armor_visibility.ArmorVisibility;
-import com.diontryban.ash_api.modloader.NeoForgeClientModInitializer;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.fml.common.Mod;
 
-public class ArmorVisibilityClientNeoForge extends NeoForgeClientModInitializer {
+@Mod(value = ArmorVisibility.MOD_ID, dist = Dist.CLIENT)
+public class ArmorVisibilityClientNeoForge {
     public ArmorVisibilityClientNeoForge() {
-        super(ArmorVisibility.MOD_ID, ArmorVisibilityClient::new);
+        ArmorVisibilityClient.init();
     }
 }
