@@ -35,15 +35,17 @@ import org.lwjgl.glfw.GLFW;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 public class ArmorVisibilityClient {
-    private static final KeyMapping KEY = KeyMappingRegistry.register(
-            ResourceLocation.fromNamespaceAndPath(ArmorVisibility.MOD_ID, "armor_visibility_toggle"),
-            GLFW.GLFW_KEY_V,
-            ArmorVisibility.MOD_ID
-    );
+    private static KeyMapping keyMapping;
 
     private static boolean keyWasDown = false;
 
     public static void init() {
+        keyMapping = KeyMappingRegistry.register(
+                ResourceLocation.fromNamespaceAndPath(ArmorVisibility.MOD_ID, "armor_visibility_toggle"),
+                GLFW.GLFW_KEY_V,
+                ArmorVisibility.MOD_ID
+        );
+
         ClientTickEvent.Pre.register(ArmorVisibilityClient::onClientStartTick);
         ModOptionsScreenRegistry.register(ArmorVisibility.OPTIONS, ArmorVisibilityOptionsScreen::new);
 
@@ -60,7 +62,7 @@ public class ArmorVisibilityClient {
 
         var options = ArmorVisibility.OPTIONS.get();
 
-        if (KEY.isDown() && !keyWasDown) {
+        if (keyMapping.isDown() && !keyWasDown) {
             if (options.saveData.hideAllArmor || options.saveData.hideMyArmor) {
                 player.playSound(SoundEvents.TRIPWIRE_CLICK_OFF, 0.5f, 1.0f);
 
@@ -91,7 +93,7 @@ public class ArmorVisibilityClient {
                 }
             }
             keyWasDown = true;
-        } else if (!KEY.isDown() && keyWasDown) {
+        } else if (!keyMapping.isDown() && keyWasDown) {
             keyWasDown = false;
         }
     }
