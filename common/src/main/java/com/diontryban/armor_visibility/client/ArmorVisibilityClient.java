@@ -26,13 +26,12 @@ import com.diontryban.ash_api.client.gui.screens.ModOptionsScreenRegistry;
 import com.diontryban.ash_api.client.input.KeyMappingRegistry;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
+import net.minecraft.client.renderer.entity.state.PlayerRenderState;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
 import org.lwjgl.glfw.GLFW;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 public class ArmorVisibilityClient {
     private static KeyMapping keyMapping;
@@ -98,22 +97,18 @@ public class ArmorVisibilityClient {
         }
     }
 
-    public static boolean maybeCancelRender(LivingEntity livingEntity, CallbackInfo ci) {
-        return maybeCancelRender(livingEntity, ci::cancel);
-    }
-
-    public static boolean maybeCancelRender(LivingEntity livingEntity, Runnable onCancel) {
+    public static boolean maybeCancelRender(LivingEntityRenderState renderState, Runnable onCancel) {
         var options = ArmorVisibility.OPTIONS.get();
 
-        if (options.playersOnly && !(livingEntity instanceof Player)) {
+        if (options.playersOnly && !(renderState instanceof PlayerRenderState)) {
             return false;
         }
 
         if (options.saveData.hideAllArmor) {
             onCancel.run();
             return true;
-        } else if (options.saveData.hideMyArmor) {
-            if (livingEntity.equals(Minecraft.getInstance().player)) {
+        } else if (options.saveData.hideMyArmor && renderState instanceof PlayerRenderState playerRenderState) {
+            if (playerRenderState.id == Minecraft.getInstance().player.getId()) {
                 onCancel.run();
                 return true;
             }

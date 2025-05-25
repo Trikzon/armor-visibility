@@ -27,27 +27,28 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.RenderLayerParent;
 import net.minecraft.client.renderer.entity.layers.CustomHeadLayer;
 import net.minecraft.client.renderer.entity.layers.RenderLayer;
-import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.client.renderer.entity.state.LivingEntityRenderState;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(CustomHeadLayer.class)
-public abstract class CustomHeadLayerMixin<T extends LivingEntity, M extends EntityModel<T> & HeadedModel> extends RenderLayer<T, M> {
-    public CustomHeadLayerMixin(RenderLayerParent<T, M> renderLayerParent) {
-        super(renderLayerParent);
+public abstract class CustomHeadLayerMixin<S extends LivingEntityRenderState, M extends EntityModel<S> & HeadedModel> extends RenderLayer<S, M> {
+    public CustomHeadLayerMixin(RenderLayerParent<S, M> renderer) {
+        super(renderer);
     }
 
-    @Inject(at = @At("HEAD"), cancellable = true, method = "render(Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;ILnet/minecraft/world/entity/LivingEntity;FFFFFF)V")
+    @Inject(at = @At("HEAD"), cancellable = true, method = "render(Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;ILnet/minecraft/client/renderer/entity/state/LivingEntityRenderState;FF)V")
     private void injectBeforeRender(
             PoseStack poseStack,
             MultiBufferSource bufferSource,
-            int i,
-            T livingEntity,
-            float f, float g, float h, float j, float k, float l,
+            int packedLight,
+            S renderState,
+            float yRot,
+            float xRot,
             CallbackInfo ci
     ) {
-        ArmorVisibilityClient.maybeCancelRender(livingEntity, ci);
+        ArmorVisibilityClient.maybeCancelRender(renderState, ci::cancel);
     }
 }
