@@ -36,19 +36,25 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(HumanoidArmorLayer.class)
-public abstract class HumanoidArmorLayerMixin<T extends LivingEntity, M extends HumanoidModel<T>, A extends HumanoidModel<T>> extends RenderLayer<T, M> {
-    public HumanoidArmorLayerMixin(RenderLayerParent<T, M> renderLayerParent) {
+public abstract class HumanoidArmorLayerMixinNeoForge<T extends LivingEntity, M extends HumanoidModel<T>, A extends HumanoidModel<T>> extends RenderLayer<T, M> {
+    public HumanoidArmorLayerMixinNeoForge(RenderLayerParent<T, M> renderLayerParent) {
         super(renderLayerParent);
     }
 
-    @Inject(at = @At("HEAD"), cancellable = true, method = "renderArmorPiece")
+    @Inject(at = @At("HEAD"), cancellable = true, method = "renderArmorPiece(Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/entity/EquipmentSlot;ILnet/minecraft/client/model/HumanoidModel;FFFFFF)V")
     private void injectBeforeRenderArmorPiece(
             PoseStack poseStack,
             MultiBufferSource bufferSource,
-            T livingEntity,
+            LivingEntity livingEntity,
             EquipmentSlot slot,
-            int i,
-            A armorModel,
+            int packedLight,
+            A model,
+            float limbSwing,
+            float limbSwingAmount,
+            float partialTick,
+            float ageInTicks,
+            float netHeadYaw,
+            float headPitch,
             CallbackInfo ci
     ) {
         ArmorVisibilityOptions options = ArmorVisibility.OPTIONS.get();

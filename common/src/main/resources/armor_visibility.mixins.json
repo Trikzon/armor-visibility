@@ -9,7 +9,6 @@
     "client.CapeLayerMixin",
     "client.CustomHeadLayerMixin",
     "client.ElytraLayerMixin",
-    "client.HumanoidArmorLayerMixin",
     "client.PlayerModelMixin"
   ],
   "server": [ ],

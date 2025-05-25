@@ -4,7 +4,9 @@
   "package": "com.diontryban.armor_visibility.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [ ],
-  "client": [ ],
+  "client": [
+    "client.HumanoidArmorLayerMixinNeoForge"
+  ],
   "server": [ ],
   "injectors": {
     "defaultRequire": 1

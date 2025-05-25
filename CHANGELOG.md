@@ -1,4 +1,7 @@
 # Changelog
+## v21.1.0
+- Update to MC 1.21.
+
 ## v21.0.1
 - Fix race conditon on NeoForge when registering KeyMappings.
 
