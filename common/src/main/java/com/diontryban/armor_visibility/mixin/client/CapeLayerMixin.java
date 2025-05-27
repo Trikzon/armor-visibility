@@ -31,9 +31,9 @@ import net.minecraft.client.renderer.entity.layers.CapeLayer;
 import net.minecraft.client.renderer.entity.layers.RenderLayer;
 import net.minecraft.client.renderer.entity.state.PlayerRenderState;
 import net.minecraft.client.resources.PlayerSkin;
+import net.minecraft.client.resources.model.EquipmentClientInfo;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.equipment.EquipmentModel;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
@@ -72,21 +72,21 @@ public abstract class CapeLayerMixin extends RenderLayer<PlayerRenderState, Play
     // keepCapeVisible is true, and the elytra has been made invisible.
     @WrapOperation(
             method = "render(Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;ILnet/minecraft/client/renderer/entity/state/PlayerRenderState;FF)V",
-            at = @At(value = "INVOKE", target = "Lnet/minecraft/client/renderer/entity/layers/CapeLayer;hasLayer(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/item/equipment/EquipmentModel$LayerType;)Z")
+            at = @At(value = "INVOKE", target = "Lnet/minecraft/client/renderer/entity/layers/CapeLayer;hasLayer(Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/client/resources/model/EquipmentClientInfo$LayerType;)Z")
     )
     private boolean redirectHasLayer(
             CapeLayer instance,
             ItemStack itemStack,
-            EquipmentModel.LayerType stack,
+            EquipmentClientInfo.LayerType stack,
             Operation<Boolean> original
     ) {
         // If it's not WINGS or HUMANOID, we don't know about it.
-        if (stack != EquipmentModel.LayerType.WINGS && stack != EquipmentModel.LayerType.HUMANOID) {
+        if (stack != EquipmentClientInfo.LayerType.WINGS && stack != EquipmentClientInfo.LayerType.HUMANOID) {
             return original.call(instance, itemStack, stack);
         }
 
         // If it's HUMANOID (chest plate), we return the original if we're not hiding the chestplate.
-        if (stack == EquipmentModel.LayerType.HUMANOID && !ArmorVisibility.OPTIONS.get().togglesChestplate) {
+        if (stack == EquipmentClientInfo.LayerType.HUMANOID && !ArmorVisibility.OPTIONS.get().togglesChestplate) {
             return original.call(instance, itemStack, stack);
         }
 
