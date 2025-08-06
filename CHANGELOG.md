@@ -1,4 +1,7 @@
 # Changelog
+## v21.0.2
+- feat: add option for always rendering hats
+
 ## v21.0.1
 - Fix race conditon on NeoForge when registering KeyMappings.
 
