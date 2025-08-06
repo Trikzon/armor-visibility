@@ -1,4 +1,7 @@
 # Changelog
+## v20.6.2
+- feat: add options for always rendering hats
+
 ## v20.6.1
 - Re-add ash_api as a requirement in the neoforge.mods.toml
 

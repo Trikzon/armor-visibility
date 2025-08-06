@@ -27,6 +27,8 @@ public class ArmorVisibilityOptions extends ModOptions {
     public boolean keepElytraVisible = false;
     @SerializedName("keep_cape_visible")
     public boolean keepCapeVisible = true;
+    @SerializedName("keep_hats_visible")
+    public boolean keepHatsVisible = false;
     @SerializedName("players_only")
     public boolean playersOnly = true;
 

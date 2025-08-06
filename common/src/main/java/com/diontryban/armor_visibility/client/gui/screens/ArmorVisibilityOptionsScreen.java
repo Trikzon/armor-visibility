@@ -51,12 +51,14 @@ public class ArmorVisibilityOptionsScreen extends ModOptionsScreen<ArmorVisibili
                 )
         );
 
-        this.list.addBig(OptionInstance.createBoolean(
-                "armor_visibility.options.players_only",
-                value -> Tooltip.create(Component.translatable("armor_visibility.options.players_only.tooltip")),
-                options.get().playersOnly,
-                value -> options.get().playersOnly = value
-        ));
+        this.list.addSmall(
+                OptionInstance.createBoolean(
+                        "armor_visibility.options.keep_hats_visible",
+                        value -> Tooltip.create(Component.translatable("armor_visibility.options.keep_hats_visible.tooltip")),
+                        options.get().keepHatsVisible,
+                        value -> options.get().keepHatsVisible = value
+                )
+        );
 
         this.list.addSmall(
                 OptionInstance.createBoolean(
@@ -84,6 +86,15 @@ public class ArmorVisibilityOptionsScreen extends ModOptionsScreen<ArmorVisibili
                         value -> Tooltip.create(Component.translatable("armor_visibility.options.toggles_boots.tooltip")),
                         options.get().togglesBoots,
                         value -> options.get().togglesBoots = value
+                )
+        );
+
+        this.list.addBig(
+                OptionInstance.createBoolean(
+                        "armor_visibility.options.players_only",
+                        value -> Tooltip.create(Component.translatable("armor_visibility.options.players_only.tooltip")),
+                        options.get().playersOnly,
+                        value -> options.get().playersOnly = value
                 )
         );
 
