@@ -19,6 +19,7 @@
 
 package com.diontryban.armor_visibility.mixin.client;
 
+import com.diontryban.armor_visibility.ArmorVisibility;
 import com.diontryban.armor_visibility.client.ArmorVisibilityClient;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.model.EntityModel;
@@ -49,6 +50,10 @@ public abstract class CustomHeadLayerMixin<S extends LivingEntityRenderState, M 
             float xRot,
             CallbackInfo ci
     ) {
+        if (ArmorVisibility.OPTIONS.get().keepHatsVisible) {
+            return;
+        }
+
         ArmorVisibilityClient.maybeCancelRender(renderState, ci::cancel);
     }
 }

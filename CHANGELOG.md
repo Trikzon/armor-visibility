@@ -1,4 +1,7 @@
 # Changelog
+## v21.3.1
+- feat: add option for always rendering hats
+
 ## v21.3.0
 - Update to MC 1.21.3.
 
