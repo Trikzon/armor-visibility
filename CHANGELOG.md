@@ -1,6 +1,7 @@
 # Changelog
 ## v21.5.1
 - feat: add option for always rendering hats
+- fix: don't show cape if elytra is kept visible
 
 ## v21.5.0
 - Update to MC 1.21.5.
