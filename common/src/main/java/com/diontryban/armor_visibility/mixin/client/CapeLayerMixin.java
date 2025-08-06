@@ -77,20 +77,25 @@ public abstract class CapeLayerMixin extends RenderLayer<PlayerRenderState, Play
     private boolean redirectHasLayer(
             CapeLayer instance,
             ItemStack itemStack,
-            EquipmentModel.LayerType stack,
+            EquipmentModel.LayerType layerType,
             Operation<Boolean> original
     ) {
         // If it's not WINGS or HUMANOID, we don't know about it.
-        if (stack != EquipmentModel.LayerType.WINGS && stack != EquipmentModel.LayerType.HUMANOID) {
-            return original.call(instance, itemStack, stack);
+        if (layerType != EquipmentModel.LayerType.WINGS && layerType != EquipmentModel.LayerType.HUMANOID) {
+            return original.call(instance, itemStack, layerType);
         }
 
         // If it's HUMANOID (chest plate), we return the original if we're not hiding the chestplate.
-        if (stack == EquipmentModel.LayerType.HUMANOID && !ArmorVisibility.OPTIONS.get().togglesChestplate) {
-            return original.call(instance, itemStack, stack);
+        if (layerType == EquipmentModel.LayerType.HUMANOID && !ArmorVisibility.OPTIONS.get().togglesChestplate) {
+            return original.call(instance, itemStack, layerType);
         }
 
-        return original.call(instance, itemStack, stack) && !ArmorVisibilityClient.maybeCancelRender(
+        // If it's WINGS (elytra), we return the original if we keep elytra visible as to not show both cape and wings.
+        if (layerType == EquipmentModel.LayerType.WINGS && ArmorVisibility.OPTIONS.get().keepElytraVisible) {
+            return original.call(instance, itemStack, layerType);
+        }
+
+        return original.call(instance, itemStack, layerType) && !ArmorVisibilityClient.maybeCancelRender(
                 armorVisibility$renderState, () -> {}
         );
     }
