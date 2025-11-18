@@ -57,6 +57,13 @@ public class ArmorVisibilityOptionsScreen extends ModOptionsScreen<ArmorVisibili
                 value -> options.get().playersOnly = value
         ));
 
+        this.list.addBig(OptionInstance.createBoolean(
+                "armor_visibility.options.inverse_keybind",
+                value -> Tooltip.create(Component.translatable("armor_visibility.options.inverse_keybind.tooltip")),
+                options.get().inverseKeybind,
+                value -> options.get().inverseKeybind = value
+        ));
+
         this.list.addSmall(
                 OptionInstance.createBoolean(
                         "armor_visibility.options.toggles_helmet",
