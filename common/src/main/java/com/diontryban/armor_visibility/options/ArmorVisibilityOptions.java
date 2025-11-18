@@ -29,6 +29,8 @@ public class ArmorVisibilityOptions extends ModOptions {
     public boolean keepCapeVisible = true;
     @SerializedName("players_only")
     public boolean playersOnly = true;
+    @SerializedName("inverse_keybind")
+    public boolean inverseKeybind = true;
 
     @SerializedName("toggles_helmet")
     public boolean togglesHelmet = true;

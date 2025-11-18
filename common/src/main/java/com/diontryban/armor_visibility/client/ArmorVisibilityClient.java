@@ -71,7 +71,7 @@ public class ArmorVisibilityClient {
             } else {
                 player.playSound(SoundEvents.TRIPWIRE_CLICK_ON, 0.5f, 1.0f);
 
-                if (player.isShiftKeyDown()) {
+                if (player.isShiftKeyDown() != options.get().inverse_keybind) {
                     hideAllArmor = true;
 
                     player.displayClientMessage(Component.translatable(
